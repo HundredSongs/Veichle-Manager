@@ -38,7 +38,7 @@ void print(const Container& cont, const print_params& p = prints_params()){
 }
 
 template<typename Container>
-void print(const Container& cont, std::ostream& out = "", const print_params& p = prints_params()){
+void print(const Container& cont, std::ostream& out, const print_params& p = prints_params()){
 
 
 
