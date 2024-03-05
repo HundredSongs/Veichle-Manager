@@ -1,5 +1,6 @@
 #include <iostream>
 
+// 1º Função
 std::string input(const std::string& msg = ""){
     
     std::string text;
@@ -10,6 +11,7 @@ std::string input(const std::string& msg = ""){
     return text;
 }
 
+// 2ª Função
 template<typename T>
 std::string to_string(const T& t){
 
