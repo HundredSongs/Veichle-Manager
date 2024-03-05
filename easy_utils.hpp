@@ -26,11 +26,11 @@ struct print_params {
 };
 
 template<typename Container>
-void print(const Container& cont, const print_params& p = prints_params()){
+void print(const Container& cont, const print_params& p = print_params()){
 
     for(int i = 0; i < cont.size(); i++){
 
-        if( i == cont.size() - 1){
+        if(i == cont.size() - 1){
             std::cout << cont[i] << print_params().end;
         } 
         else {
@@ -38,12 +38,11 @@ void print(const Container& cont, const print_params& p = prints_params()){
         }
     }
 
-    return void;
+    return ;
 }
 
 template<typename Container>
-void print(const Container& cont, std::ostream& out, const print_params& p = prints_params()){
-
+void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
 
 
 }
