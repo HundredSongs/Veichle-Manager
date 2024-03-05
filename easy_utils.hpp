@@ -29,12 +29,16 @@ template<typename Container>
 void print(const Container& cont, const print_params& p = prints_params()){
 
     for(int i = 0; i < cont.size(); i++){
+
         if( i == cont.size() - 1){
-            std::cout << cont[i] << print_params.end();
-        } else
-        std::cout << cont[i] << print_params.sep();
+            std::cout << cont[i] << print_params().end;
+        } 
+        else {
+        std::cout << cont[i] << print_params().sep;
+        }
     }
 
+    return void;
 }
 
 template<typename Container>
