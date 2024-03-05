@@ -50,10 +50,10 @@ void print(const Container& cont, std::ostream& out, const print_params& p = pri
     for(int i = 0; i < cont.size(); i++){
 
         if(i == cont.size() - 1){
-            std::cout << cont[i] << print_params().end;
+            std::cout << cont[i] << p.end;
         } 
         else {
-        std::cout << cont[i] << print_params().sep;
+            std::cout << cont[i] << p.sep;
         }
     }
 }
