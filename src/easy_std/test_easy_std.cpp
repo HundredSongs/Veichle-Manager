@@ -11,15 +11,6 @@
 
 #include "easy_utils.hpp"
 
-
-std::string input(const std::string& msg) {
-    std::cout << msg;
-    std::string str;
-    getline(std::cin, str);
-    return str;
-}
-
-
 int main() {
 
     // 1ª Função
