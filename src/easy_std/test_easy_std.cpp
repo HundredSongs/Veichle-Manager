@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
     }
 
     // 4ª Função
+    std::cout << "\n" << ast << " Funcao 4 " << ast << "\n";
     std::vector<int> vals{10, 50, 23};
     print(vals);
     print(vals, {.sep = "//"});
@@ -55,12 +56,12 @@ int main(int argc, char* argv[]) {
     print(vals, file, {.sep = ","});
 
     // 5ª Função
-
-    std::vector<int> vals{-5, 10, 31, 55, 10, 44};
-    find_index(vals, 10);
-    find_index(vals, 10, 2);
-    find_index(vals, -10);
-    find_index("Alberto"s, 'b');
+    std::cout << "\n" << ast << " Funcao 5 " << ast << "\n";
+    std::vector<int> vals2{-5, 10, 31, 55, 10, 44};
+    std::cout << find_index(vals2, 10) << "\n";
+    std::cout << find_index(vals2, 10, 2) << "\n";
+    std::cout << find_index(vals2, -10) << "\n";
+    std::cout << find_index("Alberto"s, 'b') << "\n";
 
     return 0;
 }
