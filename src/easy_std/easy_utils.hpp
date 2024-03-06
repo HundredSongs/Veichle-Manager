@@ -35,7 +35,7 @@ namespace easy_std {
     };
 
     template<typename Container>
-    void print(const Container& cont, const print_params& p = print_params()){
+    inline void print(const Container& cont, const print_params& p = print_params()){
 
 
         //auto size = sizeof(cont)/sizeof(Container);
@@ -53,7 +53,7 @@ namespace easy_std {
 
 
     template<typename Container>
-    void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
+    inline void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
 
         for(int i = 0; i < cont.size(); i++){
 

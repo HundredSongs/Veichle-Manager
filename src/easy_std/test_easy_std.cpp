@@ -37,8 +37,8 @@ int main(int argc, char* argv[]) {
     /////////////////////////////////////////////////////////////////////////
     std::cout << "\n" << ast << " VECTOR_TO_STRING " << ast << "\n";
 
-    std::vector<int> vals {10, 72, -500};
-    for (const auto& val : vals) {
+    std::vector<int> vals1 {10, 72, -500};
+    for (const auto& val : vals1) {
         std::cout << val << std::endl;
     }
 
