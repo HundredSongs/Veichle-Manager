@@ -48,7 +48,6 @@ namespace easy_std {
         }
     }
 
-
     template<typename Container>
     inline void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
 
