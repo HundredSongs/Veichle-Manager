@@ -2,18 +2,18 @@
 
 */
 
-# include <iostream>
-# include <vector>
-# include <string>
-# include <sstream>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
 
-#include <cstring>
 #include <fstream>
 
 #include <docopt/docopt.h>
 
 #include "easy_utils.hpp"
 
+using std::literals::operator""s;
 using namespace easy_std;
 
 int main(int argc, char* argv[]) {
@@ -49,11 +49,18 @@ int main(int argc, char* argv[]) {
     print(vals, {.end = "$$"});
     print(vals, {.sep = "--" , .end = "FIM\n"});
     
-    std::string s ("Alberto");
-    print(s);
-    print(s , {.sep = ""});
+    print("Alberto"s);
+    print("Alberto"s , {.sep = ""});
     std::ofstream file("dados.txt");
-    print(vals, file, {.sep = ","}); 
+    print(vals, file, {.sep = ","});
+
+    // 5ª Função
+
+    std::vector<int> vals{-5, 10, 31, 55, 10, 44};
+    find_index(vals, 10);
+    find_index(vals, 10, 2);
+    find_index(vals, -10);
+    find_index("Alberto"s, 'b');
 
     return 0;
 }

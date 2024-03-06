@@ -62,6 +62,15 @@ namespace easy_std {
         }
     }
 
-}
+    // 5ª Função
+    template<typename Container, typename Item>
+    int find_index(const Container& cont, const Item& item, int start = 0){
 
+        for(int i = start; i < cont.size(); i++){
+            if(cont[i] == item) return i;
+        }
+        return -1;
+    }
+
+} // <- namespace
 #endif
