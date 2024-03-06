@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
     /////////////////////////////////////////////////////////////////////////
     std::cout << "\n" << ast << " VECTOR_TO_STRING " << ast << "\n";
 
-    // 4ª Função
     std::vector<int> vals {10, 72, -500};
     for (const auto& val : vals) {
         std::cout << val << std::endl;
