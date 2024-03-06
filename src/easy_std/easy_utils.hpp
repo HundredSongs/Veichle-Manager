@@ -43,7 +43,7 @@ namespace easy_std {
                 std::cout << cont[i] << p.end;
             } 
             else {
-            std::cout << cont[i] << p.sep;
+                std::cout << cont[i] << p.sep;
             }
         }
     }
