@@ -39,6 +39,7 @@ int main() {
     print(vals, {.sep = "//"});
     print(vals, {.end = "$$"});
     print(vals, {.sep = "--" , .end = "FIM\n"});
+    
     std::string s ("Alberto");
     print(s);
     print(s , {.sep = ""});
