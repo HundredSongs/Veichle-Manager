@@ -37,9 +37,6 @@ namespace easy_std {
     template<typename Container>
     inline void print(const Container& cont, const print_params& p = print_params()){
 
-
-        //auto size = sizeof(cont)/sizeof(Container);
-
         for(int i = 0; i < cont.size(); i++){
 
             if(i == cont.size() - 1){
@@ -58,10 +55,10 @@ namespace easy_std {
         for(int i = 0; i < cont.size(); i++){
 
             if(i == cont.size() - 1){
-                std::cout << cont[i] << p.end;
+                out << cont[i] << p.end;
             } 
             else {
-                std::cout << cont[i] << p.sep;
+                out << cont[i] << p.sep;
             }
         }
     }

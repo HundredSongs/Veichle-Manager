@@ -52,8 +52,8 @@ int main(int argc, char* argv[]) {
     std::string s ("Alberto");
     print(s);
     print(s , {.sep = ""});
-    //ofstream file("dados.txt");
-    //print(vals, file, {.sep = ","}); 
+    std::ofstream file("dados.txt");
+    print(vals, file, {.sep = ","}); 
 
     return 0;
 }
