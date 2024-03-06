@@ -40,13 +40,13 @@ namespace easy_std {
 
         //auto size = sizeof(cont)/sizeof(Container);
 
-        for(const auto& c : cont){
+        for(int i = 0; i < cont.size(); i++){
 
             if(i == cont.size() - 1){
-                std::cout << c << p.end;
+                std::cout << cont[i] << p.end;
             } 
             else {
-            std::cout << c << p.sep;
+            std::cout << cont[i] << p.sep;
             }
         }
     }
