@@ -22,9 +22,15 @@ namespace easy_std {
     template <typename T>
     inline std::string to_string(const std::vector<T>& vec) {
         std::stringstream ss;
-            for (int i = 0; i < vec.size();i += 1) {
-                ss << vec[i];
+        ss << "{ ";
+        ss << vec[0];
+        for (int i = 1; i < vec.size();i += 1) {
+            ss << vec[i];
+            if(i != vec.size() - 1){
+                ss << ", ";
             }
+        }
+        ss << " }";
         return ss.str();
     }
 
