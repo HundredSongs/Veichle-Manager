@@ -3,7 +3,7 @@
 
 namespace easy_std {
 
-    // 1ª Função
+    // 1ª Função -----------------------------------------------
     inline std::string input(const std::string& msg) {
         std::cout << msg;
         std::string str;
@@ -11,20 +11,20 @@ namespace easy_std {
         return str;
     }
 
-    // 2ª Função
+    // 2ª Função -----------------------------------------------
     template <typename T>
     inline std::string to_string(const T& t) {
         std::ostringstream ss;
         ss << t;
         return ss.str();
     }
-    // 2ª Função OVERLOADING
+    // 2ª Função OVERLOADING -----------------------------------
     template <typename T>
     inline std::string to_string(const std::vector<T>& vec) {
         std::stringstream ss;
         ss << "{ ";
-        ss << vec[0];
-        for (int i = 1; i < vec.size();i += 1) {
+
+        for (int i = 0; i < vec.size();i += 1) {
             ss << vec[i];
             if(i != vec.size() - 1){
                 ss << ", ";
@@ -34,7 +34,7 @@ namespace easy_std {
         return ss.str();
     }
 
-    // 4ª Função ------------------------------------
+    // 4ª Função --------------------------------------------------------------------
     struct print_params {
         std::string sep{" "};
         std::string end{"\n"};
@@ -68,7 +68,7 @@ namespace easy_std {
         }
     }
 
-    // 5ª Função
+    // 5ª Função ----------------------------------------------------------------
     template<typename Container, typename Item>
     int find_index(const Container& cont, const Item& item, int start = 0){
 
