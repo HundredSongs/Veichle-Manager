@@ -18,12 +18,12 @@ namespace easy_std {
         ss << t;
         return ss.str();
     }
-    // 2ª Função OVERLOADING -----------------------------------
+
     template <typename T>
     inline std::string to_string(const std::vector<T>& vec) {
+
         std::stringstream ss;
         ss << "{ ";
-
         for (int i = 0; i < vec.size();i += 1) {
             ss << vec[i];
             if(i != vec.size() - 1){
@@ -32,6 +32,51 @@ namespace easy_std {
         }
         ss << " }";
         return ss.str();
+    }
+
+    template <typename T>
+    inline std::string to_string(const std::list<T>& lis) {
+        
+        std::stringstream ss;
+        auto it = lis.begin();
+
+        ss << "{ ";
+        for (int i = 0; i < lis.size(); i++, it++) {
+            ss << *it;
+            if(i != lis.size() - 1){
+                ss << ", ";
+            }
+        }
+        ss << " }";
+
+        return ss.str();
+    }
+
+    template <typename T, typename N>
+    inline std::string to_string(const std::map<T, N>& mapa) {
+        
+        std::stringstream ss;
+        auto it = mapa.begin();
+
+        ss << "{ ";
+
+        if(mapa.size() > 0){
+
+            ss << (*it).first << " => " << (*it).second;
+            for (++it; it != mapa.end(); ++it) {
+                ss << ", " << (*it).first << " => " << (*it).second;
+            }
+        }
+
+        ss << " }";
+        
+        return ss.str();
+    }
+
+    template <typename T, typename N>
+    inline std::string to_string(const std::unordered_map<T, N>& mapa) {
+        
+        return to_string(std::map( mapa.begin(), mapa.end() ) );
     }
 
     // 4ª Função --------------------------------------------------------------------

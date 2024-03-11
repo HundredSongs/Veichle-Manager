@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <list>
+#include <map>
 
 #include <fstream>
 
@@ -25,7 +27,7 @@ int main(int argc, char* argv[]) {
     std::string name1 = input("Como se chama? ");
     std::cout << "Nome: " << name1 << std::endl; 
 
-    /////////////////////////////////////////////////////////////////////////
+    // 2ª Função - to_string
     std::cout << "\n" << ast << " NUM_TO_STRING " << ast << "\n";
 
     int valor1 = 1597;
@@ -34,13 +36,27 @@ int main(int argc, char* argv[]) {
     double valor2 = 72.89;
     std::cout << "valor2: " << valor2 << " => " << "to_string(valor2) => " << to_string(valor2) << std::endl;
     
-    /////////////////////////////////////////////////////////////////////////
+    // Vector to_string
     std::cout << "\n" << ast << " VECTOR_TO_STRING " << ast << "\n";
 
     std::vector<int> vals1 {10, 72, -500};
     for (const auto& val : vals1) {
         std::cout << val << std::endl;
     }
+    // Listas to_string
+    std::cout << "\n" << ast << " LIST_TO_STRING " << ast << "\n";
+
+    std::list<int> lis {10, 20, 30};
+    std::cout << to_string(lis) << std::endl;
+
+    // Map to_string
+    std::cout << "\n" << ast << " MAP_TO_STRING " << ast << "\n";
+
+    std::map<std::string, int> idades { {"Alberto", 31}, {"Arnaldo", 40}, {"Armando", 60} };
+    std::cout << to_string(idades) << std::endl;
+
+    std::unordered_map<std::string, int> idades2 { {"Alberto", 31}, {"Arnaldo", 40}, {"Armando", 60} };
+    std::cout << to_string(idades2) << std::endl;
 
     // 4ª Função
     std::cout << "\n" << ast << " Funcao 4 " << ast << "\n";
