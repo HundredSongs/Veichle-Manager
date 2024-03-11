@@ -79,6 +79,12 @@ namespace easy_std {
         return to_string(std::map( mapa.begin(), mapa.end() ) );
     }
 
+    // 3ª Função --------------------------------------------------------------------
+    template <typename T>
+    T convert(const std::string& str){
+
+    }
+
     // 4ª Função --------------------------------------------------------------------
     struct print_params {
         std::string sep{" "};
@@ -122,6 +128,7 @@ namespace easy_std {
         }
         return -1;
     }
+
 
 } // <- namespace
 #endif
