@@ -90,38 +90,38 @@ namespace easy_std {
         return item;
     }
 
-    // 4ª Função --------------------------------------------------------------------
+    // 4ª Função ---------------------- ----------------------------------------------
     struct print_params {
         std::string sep{" "};
         std::string end{"\n"};
-    };
+    }; 
 
     template<typename Container>
     inline void print(const Container& cont, const print_params& p = print_params()){
+        
+        if(cont.size() > 0){
 
-        for(int i = 0; i < cont.size(); i++){
-
-            if(i == cont.size() - 1){
-                std::cout << cont[i] << p.end;
-            } 
-            else {
-                std::cout << cont[i] << p.sep;
+            auto iter = cont.begin();
+            std::cout << *iter;
+            for(++iter; iter != cont.end(); ++iter){
+                std::cout << p.sep << *iter;
             }
         }
+        std::cout << p.end;
     }
 
     template<typename Container>
     inline void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
 
-        for(int i = 0; i < cont.size(); i++){
+        if(cont.size() > 0){
 
-            if(i == cont.size() - 1){
-                out << cont[i] << p.end;
-            } 
-            else {
-                out << cont[i] << p.sep;
+            auto iter = cont.begin();
+            out << *iter;
+            for(++iter; iter != cont.end(); ++iter){
+                out << p.sep << *iter;
             }
         }
+        out << p.end;
     }
 
     // 5ª Função ----------------------------------------------------------------

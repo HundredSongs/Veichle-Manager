@@ -22,14 +22,15 @@ using namespace easy_std;
 
 int main(int argc, char* argv[]) {
 
-    // 1ª Função
+    // 1ª Função --------------------------------------------------------
     std::string ast(10, '*');
     /////////////////////////////////////////////////////////////////////////
     std::cout << "\n" << ast << " INPUT " << ast << "\n";
     std::string name1 = input("Como se chama? ");
     std::cout << "Nome: " << name1 << std::endl; 
 
-    // 2ª Função - to_string
+
+    // 2ª Função - to_string~--------------------------------------------
     std::cout << "\n" << ast << " TO_STRING " << ast << "\n";
 
     int valor1 = 1597;
@@ -60,7 +61,8 @@ int main(int argc, char* argv[]) {
     std::unordered_map<std::string, int> idades2 { {"Alberto", 31}, {"Arnaldo", 40}, {"Armando", 60} };
     std::cout << to_string(idades2) << std::endl;
 
-    // 3ª Função
+
+    // 3ª Função --------------------------------------------------------
     std::cout << "\n" << ast << " CONVERT " << ast << "\n";
 
     auto x = convert<int>("289");
@@ -79,7 +81,8 @@ int main(int argc, char* argv[]) {
     auto age = convert<int>(input("How old are you? "));
     std::cout << "You are " << age << " year old." << std::endl;
 
-    // 4ª Função
+
+    // 4ª Função ------------------------------------------------
     std::cout << "\n" << ast << " PRINT " << ast << "\n";
 
     std::vector<double> vec5{ 10, 2.5, 12,-300, -2.78, 0, 450 };
@@ -100,7 +103,8 @@ int main(int argc, char* argv[]) {
     std::ofstream file("dados.txt");
     print(vals, file, {.sep = ","});
 
-    // 5ª Função
+
+    // 5ª Função -----------------------------------------------
     std::cout << "\n" << ast << " FIND_INDEX " << ast << "\n";
     std::vector<int> vals2{-5, 10, 31, 55, 10, 44};
     std::cout << find_index(vals2, 10) << "\n";
