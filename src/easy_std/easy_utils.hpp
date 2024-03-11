@@ -22,7 +22,7 @@ namespace easy_std {
     template <typename T>
     inline std::string to_string(const std::vector<T>& vec) {
 
-        std::stringstream ss;
+        std::ostringstream ss;
         ss << "{ ";
         for (int i = 0; i < vec.size();i += 1) {
             ss << vec[i];
@@ -37,7 +37,7 @@ namespace easy_std {
     template <typename T>
     inline std::string to_string(const std::list<T>& lis) {
         
-        std::stringstream ss;
+        std::ostringstream ss;
         auto it = lis.begin();
 
         ss << "{ ";
@@ -55,7 +55,7 @@ namespace easy_std {
     template <typename T, typename N>
     inline std::string to_string(const std::map<T, N>& mapa) {
         
-        std::stringstream ss;
+        std::ostringstream ss;
         auto it = mapa.begin();
 
         ss << "{ ";
@@ -82,7 +82,12 @@ namespace easy_std {
     // 3ª Função --------------------------------------------------------------------
     template <typename T>
     T convert(const std::string& str){
-
+        std::istringstream ss(str);
+        T item;
+        if(!(ss >> item)){
+            throw std::invalid_argument("ERROR: Failed to Convert " + str);
+        }
+        return item;
     }
 
     // 4ª Função --------------------------------------------------------------------
