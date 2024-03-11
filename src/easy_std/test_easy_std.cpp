@@ -92,6 +92,9 @@ int main(int argc, char* argv[]) {
     std::cout << R"(print(vec5, {.sep= "^^"}))" << std::endl;
     print(vec5, {.sep="^^"});
 
+    std::cout << R"(print(vec5, {.end= "$\n"}))" << std::endl;
+    print(vec5, {.end="&\n"});
+
     std::vector<int> vals{10, 50, 23};
     print(vals);
     print(vals, {.sep = "//"});
