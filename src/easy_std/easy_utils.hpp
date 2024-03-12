@@ -97,20 +97,6 @@ namespace easy_std {
     }; 
 
     template<typename Container>
-    inline void print(const Container& cont, const print_params& p = print_params()){
-        
-        if(cont.size() > 0){
-
-            auto iter = cont.begin();
-            std::cout << *iter;
-            for(++iter; iter != cont.end(); ++iter){
-                std::cout << p.sep << *iter;
-            }
-        }
-        std::cout << p.end;
-    }
-
-    template<typename Container>
     inline void print(const Container& cont, std::ostream& out, const print_params& p = print_params()){
 
         if(cont.size() > 0){
@@ -123,6 +109,17 @@ namespace easy_std {
         }
         out << p.end;
     }
+
+    template<typename Container>
+    inline void print(const Container& cont, const print_params& p = print_params()){
+        print(cont, std::cout, p);
+    }
+
+    template<typename T>
+    inline void print(const initializer_list<T>& cont, const print_params& p = print_params()){
+        print(cont, std::cout, p);
+    }
+
 
     // 5ª Função ----------------------------------------------------------------
     template<typename Container, typename Item>
