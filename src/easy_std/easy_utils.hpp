@@ -116,8 +116,13 @@ namespace easy_std {
     }
 
     template<typename T>
-    inline void print(const initializer_list<T>& cont, const print_params& p = print_params()){
-        print(cont, std::cout, p);
+    inline void print(const std::initializer_list<T>& il, std::ostream& out, const print_params& p = print_params()){
+        print(std::vector<T>(il), out, p);
+    }
+
+    template<typename T>
+    inline void print(const std::initializer_list<T>& ilist, const print_params& p = print_params()){
+        print(ilist, std::cout, p);
     }
 
 
