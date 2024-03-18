@@ -20,33 +20,54 @@ namespace easy_std {
     */
     bool is_white_space(char ch) {
         return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
-
     }
 
-    // bool is_white_space(const string& str)
     // Devolve true se todos os caractere da string str forem de espaçamento. 
     // Deve utilizar a versão para um caractere.
     // Exemplo:
     // is_white_space(" \n\t ") => true
     // is_white_space(" \n\t3 ") => false
+    bool is_white_space(const std::string& str) { 
+        for (char ch : str) {
+            if (!(ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r')) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * Devolve true se o caractere ch for um dígito decimal.
     */
     bool is_digit(char ch) {
-
+        return ch >= '0' && ch <= '9';
     }
 
-    // bool is_digit(const string& str)
     // Devolve true se todos os caractere da string str forem dígitos. 
     // Deve utilizar a versão para um caractere.
+    bool is_digit(const std::string& str) {
+        for (char ch : str) {
+            if (!(ch >= '0' && ch <= '9')) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * Converte uma letra maiúscula para minúscula; 
      * implemente a versão complementar to_upper.
     */
     char to_lower(char ch) {
+        if (ch >= 'A' && ch <= 'Z') {
+            return ch + ('a' - 'A');
+        }
+    }
 
+    char to_upper(char ch) {
+        if (ch >= 'a' && ch <= 'z') {
+            return ch - ('a' - 'A');
+        }
     }
 
     /**
@@ -55,9 +76,17 @@ namespace easy_std {
      * mas também devolve-a para que possa ser utilizada em expressões 
      * do tipo string
     */
-    std::string& to_lower(std::string& str) {
+    // std::string& to_lower(std::string& str) {
+    //     std::string convert;
+    //     for (char& ch : str) {
+    //         if (ch >= 'A' && ch <= 'Z') {
+    //             ch += ('a' - 'A');
+    //         }
+    //             convert += ch;
+    //     }
+    //     return convert;
+    // }
 
-    }
 
     /**
      * Apara a string str à esquerda e devolve-a; implemente a 
@@ -69,16 +98,16 @@ namespace easy_std {
      * Se a string não possuir caracteres de espaçamento à esquerda, 
      * então é simplesmente devolvida.
     */
-    std::string& trim_left(std::string& str) {
+    // std::string& trim_left(std::string& str) {
         
-    }
+    // }
 
     /**
      * Apara a string str à esquerda e à direita devolvendo essa string.
     */
-    std::string& trim(std::string& str) {
+    // std::string& trim(std::string& str) {
 
-    }
+    // }
 
     /**
      * Inverte a string str e devolve-a. Tal como com as funções trim, 
@@ -87,9 +116,9 @@ namespace easy_std {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-    std::string& reverse(std::string& str) {
+    // std::string& reverse(std::string& str) {
 
-    }
+    // }
 
     /**
      * Devolve uma cópia invertida da string str com os caracteres 
@@ -112,10 +141,10 @@ namespace easy_std {
      *    replace("ana avelar alves", 'a', 'A', 4, 9) => "ana AvelAr alves"
      *    replace("ana avelar", 'b', 'A') => "ana avelar"
     */
-    std::string& replace(std::string& str, char ch1, char ch2, 
-                         int start = 0, int end = -1) {
+    // std::string& replace(std::string& str, char ch1, char ch2, 
+    //                      int start = 0, int end = -1) {
 
-    }
+    // }
 
     /**
      * Substitui em str todas as ocorrências da substring substr1 por substr2; 
@@ -137,11 +166,11 @@ namespace easy_std {
      *    replace("ana mariana", "ana", "anabela") => "anabela marianabela"
      *    replace("diana mariana", "ana", "") => "di mari"
     */
-    std::string& replace(std::string& str, const std::string& substr1, 
-                         const std::string& substr2, int start = 0, 
-                         int end = -1) {
+    // std::string& replace(std::string& str, const std::string& substr1, 
+    //                      const std::string& substr2, int start = 0, 
+    //                      int end = -1) {
 
-    }
+    // }
 
     /**
      * "Parte" uma string em pedaços delimitados por delim. 
@@ -157,10 +186,10 @@ namespace easy_std {
      *    split("-ABC---DEF--GHI-", "--") => {"-ABC", "-DEF", "GHI-"}
      *    split("ABCDEF", "") => {"A", "B", "C", "D", "E", "F"}
     */
-    std::vector<std::string> split(const std::string& str, 
-                                   const std::string& delim) {
+    // std::vector<std::string> split(const std::string& str, 
+    //                                const std::string& delim) {
 
-    }
+    // }
 
     /**
      * O oposto de split. "Une" as várias strings no vector parts com o 
@@ -178,10 +207,10 @@ namespace easy_std {
      *    join({"ABC", "DEF"}, ".") => "ABC.DEF"
      *    join(split("ABC.DEF.GHI", "."), "+")) => "ABC+DEF+GHI"
     */
-    std::string join(const std::vector<std::string>& parts, 
-                      const std::string& delim) {
+    // std::string join(const std::vector<std::string>& parts, 
+    //                   const std::string& delim) {
         
-    }
+    // }
 
 } //<= namespace
 
