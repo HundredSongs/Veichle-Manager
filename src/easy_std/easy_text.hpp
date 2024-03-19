@@ -72,20 +72,18 @@ namespace easy_std {
 
     /**
      * Converte uma letra maiúscula para minúscula; implemente a 
-     * versão complementar to_upper. Esta função modifca a string recebida, 
+     * versão complementar to_upper. Esta função modifica a string recebida, 
      * mas também devolve-a para que possa ser utilizada em expressões 
      * do tipo string
     */
-    // std::string& to_lower(std::string& str) {
-    //     std::string convert;
-    //     for (char& ch : str) {
-    //         if (ch >= 'A' && ch <= 'Z') {
-    //             ch += ('a' - 'A');
-    //         }
-    //             convert += ch;
-    //     }
-    //     return convert;
-    // }
+    std::string& to_lower(std::string& str) {
+        for (char& ch : str) {
+            if (ch >= 'A' && ch <= 'Z') {
+                ch += ('a' - 'A');
+            }
+        }
+        return str;
+    }
 
 
     /**
