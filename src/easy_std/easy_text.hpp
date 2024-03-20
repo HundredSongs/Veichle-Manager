@@ -1,74 +1,68 @@
 /**
- * Módulo com utilitários gerais que integram a biblioteca EASY_STD.
+ * Módulo com utilitários gerais que integram a biblioteca EASY_TEXT.
  * 
  * Desenvolvido por João Roque e Licínio Feliciano
 */
 
-#include <iostream>
 #include <string>
-#include <vector>
 
 #ifndef __EASY_TEXT_HPP__
 #define __EASY_TEXT_HPP__
 
 
-namespace easy_std {
+namespace easy_text {
 
     /**
      * Devolve true se o caractere ch for um caractere de espaçamento, ou seja, 
      * se for um dos seguintes: ' ', '\n', '\t' ou '\r').
     */
-    bool is_white_space(char ch) {
-        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
-    }
-
+//    bool is_white_space(char ch) {
+//        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
+//    }
+    
     // Devolve true se todos os caractere da string str forem de espaçamento. 
     // Deve utilizar a versão para um caractere.
     // Exemplo:
     // is_white_space(" \n\t ") => true
     // is_white_space(" \n\t3 ") => false
-    bool is_white_space(const std::string& str) { 
-        for (char ch : str) {
-            if (!(ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r')) {
-                return false;
-            }
-        }
-        return true;
-    }
+    // bool is_white_space(const std::string& str) { 
+    //     for (char ch : str) {
+    //         if (!(ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r')) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
 
     /**
      * Devolve true se o caractere ch for um dígito decimal.
     */
-    bool is_digit(char ch) {
+    bool is_digit(char ch) {   // <== FUNCIONA
         return ch >= '0' && ch <= '9';
     }
 
     // Devolve true se todos os caractere da string str forem dígitos. 
     // Deve utilizar a versão para um caractere.
-    bool is_digit(const std::string& str) {
-        for (char ch : str) {
-            if (!(ch >= '0' && ch <= '9')) {
-                return false;
-            }
-        }
-        return true;
-    }
+//    bool is_digit(const std::string& str) {
+//        for (char ch : str) {
+//            if (!(ch >= '0' && ch <= '9')) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
 
     /**
      * Converte uma letra maiúscula para minúscula; 
      * implemente a versão complementar to_upper.
     */
-    char to_lower(char ch) {
-        if (ch >= 'A' && ch <= 'Z') {
-            return ch + ('a' - 'A');
-        }
-    }
+     char to_lower(char ch) {
+        return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
+     }
 
-    char to_upper(char ch) {
-        if (ch >= 'a' && ch <= 'z') {
-            return ch - ('a' - 'A');
-        }
-    }
+     char to_upper(char ch) {
+        return ch >= 'a' && ch <= 'z'? ch - ('a' - 'A') : ch;
+     }
 
     /**
      * Converte uma letra maiúscula para minúscula; implemente a 
@@ -76,14 +70,14 @@ namespace easy_std {
      * mas também devolve-a para que possa ser utilizada em expressões 
      * do tipo string
     */
-    std::string& to_lower(std::string& str) {
-        for (char& ch : str) {
-            if (ch >= 'A' && ch <= 'Z') {
-                ch += ('a' - 'A');
-            }
-        }
-        return str;
-    }
+//    std::string& to_lower(std::string& str) {
+//        for (char& ch : str) {
+//            if (ch >= 'A' && ch <= 'Z') {
+//                ch += ('a' - 'A');
+//            }
+//        }
+//        return str;
+//    }
 
 
     /**
@@ -91,14 +85,22 @@ namespace easy_std {
      * versão complementar trim_right. "Aparar" uma string à esquerda consiste 
      * em remover os caracteres de espaçamento à esquerda, que estão entre o 
      * início da string e o primeiro caractere que não é de espaçamento. 
-     * Esta função modifca a string recebida, mas também devolve-a para 
+     * Esta função modifica a string recebida, mas também devolve-a para 
      * que possa ser utilizada em expressões do tipo string. 
      * Se a string não possuir caracteres de espaçamento à esquerda, 
      * então é simplesmente devolvida.
     */
-    // std::string& trim_left(std::string& str) {
-        
-    // }
+    std::string& trim_left(std::string& str) { //<== FUNCIONA
+        std::size_t index = 0;
+
+        while (index < str.size() && str[index] == ' ') {
+            index++;
+        }
+        if (index > 0) {
+            str.erase(0, index);
+        }
+        return str;
+    }
 
     /**
      * Apara a string str à esquerda e à direita devolvendo essa string.
@@ -114,9 +116,11 @@ namespace easy_std {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-    // std::string& reverse(std::string& str) {
-
-    // }
+//    std::string& reverse(std::string& str) {
+//    for (int i = 0; i < str.size(); i++) {
+//        str[str.length() - 1 - i];
+//        return str;
+//    }
 
     /**
      * Devolve uma cópia invertida da string str com os caracteres 

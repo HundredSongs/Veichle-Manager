@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <stdexcept>
+#include <docopt/docopot.h>
 
 #include "easy_utils.hpp"
 
@@ -31,7 +32,6 @@ int main() {
      string valor3 = "TESTE";
      cout << "valor3 " << valor3 << " => " << "to_string(valor3) " 
           << to_string(valor3) << endl;
-
 
      cout << "\nVECTORES\n";
 
