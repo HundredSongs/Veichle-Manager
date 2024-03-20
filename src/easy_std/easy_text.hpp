@@ -16,9 +16,9 @@ namespace easy_text {
      * Devolve true se o caractere ch for um caractere de espaçamento, ou seja, 
      * se for um dos seguintes: ' ', '\n', '\t' ou '\r').
     */
-//    bool is_white_space(char ch) {
-//        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
-//    }
+    //    bool is_white_space(char ch) {
+    //        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
+    //    }
     
     // Devolve true se todos os caractere da string str forem de espaçamento. 
     // Deve utilizar a versão para um caractere.
@@ -116,11 +116,13 @@ namespace easy_text {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-//    std::string& reverse(std::string& str) {
-//    for (int i = 0; i < str.size(); i++) {
-//        str[str.length() - 1 - i];
-//        return str;
-//    }
+    std::string reverse(const std::string& str) {
+        std::string reversed = "";
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed += str[i];
+        }
+        return reversed;
+    }
 
     /**
      * Devolve uma cópia invertida da string str com os caracteres 
