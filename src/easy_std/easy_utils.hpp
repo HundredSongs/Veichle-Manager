@@ -136,6 +136,26 @@ namespace easy_std {
         return -1;
     }
 
+    // 6ª Função //////////////////////////////////////////////////////////////
+    template<typename Container, typename T>
+    bool in(const Container& s, T item){
+        return std::find(s.begin(), s.end(), item) != s.end();
+    }
+
+    template<typename T>
+    bool in(const std::initializer_list<T>& ilist, T item){
+        return std::find(ilist.begin(), ilist.end(), item) != ilist.end();
+    }
+
+    template<typename Key, typename Value>
+    bool in(const std::map<Key, Value>& map, const Key& item){
+        return map.find(item) != map.end();
+    }
+
+    template<typename Key, typename Value>
+    bool in(const std::unordered_map<Key, Value>& map, const Key& item){
+        return map.find(item) != map.end();
+    }
 
 } // <- namespace
 #endif

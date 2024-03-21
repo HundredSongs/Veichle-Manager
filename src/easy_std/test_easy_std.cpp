@@ -10,7 +10,9 @@
 #include <string>
 #include <list>
 #include <map>
+#include <unordered_map>
 
+#include <ostream>
 #include <sstream>
 #include <fstream>
 
@@ -107,8 +109,8 @@ int main(int argc, char* argv[]) {
     print("Alberto"s);
     print("Alberto"s , {.sep = ""});
 
-    std::ofstream file("dados.txt");
-    print(vals, file, {.sep = ","});
+    //std::ofstream file("dados.txt");
+    //print(vals, file, {.sep = ","});
 
     print({"Armando", "Alberto", "Arnaldo"}, {.sep = ".", .end = "<=\n"});
 
@@ -121,6 +123,23 @@ int main(int argc, char* argv[]) {
     std::cout << find_index(vals2, -10) << "\n";
     std::cout << find_index("Alberto"s, 'b') << "\n";
 
+
+    // 6ª Função -----------------------------------------------
+    std::cout << "\n" << ast << " FIND_INDEX " << ast << "\n";
+
+    std::vector<int> vals{-5, 10, 31, 55, 10, 44};
+    std::cout << in(vals, 10) << std::endl;        // true
+    std::cout << in(vals, -10);       // false
+    std::cout << in("Alberto"s, 'b'); // true
+    std::cout << in({"ana", "bruno", "ze"}, "bruno"); // true
+    
+    std::map<std::string, int> portos = {{"http", 80}, {"ftp", 21}, {"telnet", 25}};
+    std::cout << in(portos, "ftp"s);     // true
+    std::cout << in(portos, "smtp"s);     // false
+
+
+
+    // END /////////////////////////////////////////////////////
     std::cout << "\n" << ast << "***************" << ast << std::endl;
     std::cout << "FIM DOS TESTES DO MODULO EASY_UTILS" << "\n" ;
     std::cout << "\n" << ast << "***************" << ast << "\n" ;
