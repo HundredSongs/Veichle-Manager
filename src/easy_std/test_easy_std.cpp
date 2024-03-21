@@ -107,8 +107,8 @@ int main(int argc, char* argv[]) {
     print("Alberto"s);
     print("Alberto"s , {.sep = ""});
 
-    //std::ofstream file("dados.txt");
-    //print(vals, file, {.sep = ","});
+    std::ofstream file("dados.txt");
+    print(vals, file, {.sep = ","});
 
     print({"Armando", "Alberto", "Arnaldo"}, {.sep = ".", .end = "<=\n"});
 
