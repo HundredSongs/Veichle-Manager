@@ -127,12 +127,12 @@ int main(int argc, char* argv[]) {
     // 6ª Função -----------------------------------------------
     std::cout << "\n" << ast << " FIND_INDEX " << ast << "\n";
 
-    std::vector<int> vals{-5, 10, 31, 55, 10, 44};
-    std::cout << in(vals, 10) << std::endl;        // true
-    std::cout << in(vals, -10);       // false
+    std::vector<int> vals9{-5, 10, 31, 55, 10, 44};
+    std::cout << in(vals9, 10);        // true
+    std::cout << in(vals9, -10);       // false
     std::cout << in("Alberto"s, 'b'); // true
     std::cout << in({"ana", "bruno", "ze"}, "bruno"); // true
-    
+
     std::map<std::string, int> portos = {{"http", 80}, {"ftp", 21}, {"telnet", 25}};
     std::cout << in(portos, "ftp"s);     // true
     std::cout << in(portos, "smtp"s);     // false
