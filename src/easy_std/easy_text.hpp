@@ -12,27 +12,25 @@
 
 namespace easy_text {
 
+
     /**
      * Devolve true se o caractere ch for um caractere de espaçamento, ou seja, 
      * se for um dos seguintes: ' ', '\n', '\t' ou '\r').
     */
-//    bool is_white_space(char ch) {
-//        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
-//    }
-    
+    bool is_white_space(char ch){
+        return ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r';
+    }
+
+
     // Devolve true se todos os caractere da string str forem de espaçamento. 
     // Deve utilizar a versão para um caractere.
-    // Exemplo:
-    // is_white_space(" \n\t ") => true
-    // is_white_space(" \n\t3 ") => false
-    // bool is_white_space(const std::string& str) { 
-    //     for (char ch : str) {
-    //         if (!(ch == ' ' || ch == '\n' || ch == '\t' || ch == '\r')) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
+    bool is_white_space(const std::string& str){ 
+        for(const char& ch : str){
+            if(!is_white_space(ch)) return false;
+        }
+        return true;
+    }
+    
 
     /**
      * Devolve true se o caractere ch for um dígito decimal.
@@ -43,26 +41,29 @@ namespace easy_text {
 
     // Devolve true se todos os caractere da string str forem dígitos. 
     // Deve utilizar a versão para um caractere.
-//    bool is_digit(const std::string& str) {
-//        for (char ch : str) {
-//            if (!(ch >= '0' && ch <= '9')) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
+    bool is_digit(const std::string& str){
+        for(const char& ch : str){
+            if(!is_digit(ch)) return false;
+        }
+        return true;
+    }
+
 
     /**
      * Converte uma letra maiúscula para minúscula; 
      * implemente a versão complementar to_upper.
     */
-     char to_lower(char ch) {
-        return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
-     }
+    char to_lower(char ch) {
+    return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
+    }
 
-     char to_upper(char ch) {
-        return ch >= 'a' && ch <= 'z'? ch - ('a' - 'A') : ch;
-     }
+    std::string& to_lower(std::string& str){
+        for(char& ch : str){
+            to_lower(ch);
+        }
+        return str;
+    }
+
 
     /**
      * Converte uma letra maiúscula para minúscula; implemente a 
@@ -70,14 +71,17 @@ namespace easy_text {
      * mas também devolve-a para que possa ser utilizada em expressões 
      * do tipo string
     */
-//    std::string& to_lower(std::string& str) {
-//        for (char& ch : str) {
-//            if (ch >= 'A' && ch <= 'Z') {
-//                ch += ('a' - 'A');
-//            }
-//        }
-//        return str;
-//    }
+
+    char to_upper(char ch) {
+        return ch >= 'a' && ch <= 'z'? ch - ('a' - 'A') : ch;
+    }
+    
+    std::string& to_upper(std::string& str){
+        for(char& ch : str){
+            to_upper(ch);
+        }
+        return str;
+    }
 
 
     /**

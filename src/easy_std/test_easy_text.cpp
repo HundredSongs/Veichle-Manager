@@ -5,49 +5,53 @@
 using namespace easy_text;
 
 int main() {
+    /////////////////////////////////////////////////
     std::string ast(10, '*');
     std::cout << ast + "IS_WHITE_SPACE" + ast << "\n\n";
 
-    char ch;
-    //std::cout << "Insira um caractere: ";
-    //std::cin >> ch;
-    //std::cout << is_white_space(ch);
+    std::string text;
     
+    std::cout << "Insira um caractere: ";
+    getline(std::cin, text);
+    std::cout << is_white_space(text) << std::endl;
+    
+    /////////////////////////////////////////////////
     std::cout << ast + "IS_DIGIT" + ast << "\n\n";
 
+
     std::cout << "Insira um caractere: ";
-    std::cin >> ch;
+    getline(std::cin, text);
     
-    if (is_digit(ch) == true) {
-        std::cout << "True";
+    if (is_digit(text) == true) {
+        std::cout << "True" << std::endl;
     }
     else {
-        std::cout << "False";
+        std::cout << "False" << std::endl;
     }
 
-
+    /////////////////////////////////////////////////
     std::cout << ast + "TO_LOWER" + ast << "\n\n";
 
     std::cout << "Insira um caractere: ";
-    std::cin >> ch;
+    getline(std::cin, text);
 
-    std::cout << to_lower(ch);
+    std::cout << to_lower(text) << std::endl;
 
-
+    /////////////////////////////////////////////////
     std::cout << ast + "TO_UPPER" + ast << "\n\n";
 
     std::cout << "Insira um caractere: ";
-    std::cin >> ch;
+    getline(std::cin, text);
 
-    std::cout << to_upper(ch);
+    std::cout << to_upper(text) << std::endl;
 
-
+    /////////////////////////////////////////////////
     std::cout << ast + "trim_left" + ast << "\n\n";
     std::string str;
     std::cout << "Insira uma palavra: ";
-    std::cin >> str;
+    getline(std::cin, str);
 
-    std::cout << trim_left(str);
+    std::cout << trim_left(str) << std::endl;
 
 
 } //<= Main
