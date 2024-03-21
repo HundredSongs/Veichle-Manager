@@ -59,7 +59,7 @@ namespace easy_text {
 
     std::string& to_lower(std::string& str){
         for(char& ch : str){
-            to_lower(ch);
+            ch = to_lower(ch);
         }
         return str;
     }
@@ -78,7 +78,7 @@ namespace easy_text {
     
     std::string& to_upper(std::string& str){
         for(char& ch : str){
-            to_upper(ch);
+            ch = to_upper(ch);
         }
         return str;
     }
@@ -95,14 +95,13 @@ namespace easy_text {
      * então é simplesmente devolvida.
     */
     std::string& trim_left(std::string& str) { //<== FUNCIONA
-        std::size_t index = 0;
 
-        while (index < str.size() && str[index] == ' ') {
-            index++;
+        std::size_t index;
+        for(index = 0; index < str.size(); index++){
+            if(str[index] != ' ') break;
         }
-        if (index > 0) {
-            str.erase(0, index);
-        }
+
+        str.erase(0, index);
         return str;
     }
 
