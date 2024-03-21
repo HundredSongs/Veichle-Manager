@@ -51,23 +51,29 @@ int main() {
     std::cout << arrow_f << to_upper(ch) << arrow_b << std::endl;
 
 
-    std::cout << ast + "TRIM_LEFT" + ast << "\n";
-    std::string str;
-    std::cout << "Insira uma palavra: ";
-    std::cin >> str;
+    //std::cout << ast + "TRIM_LEFT" + ast << "\n";
+    //std::string str;
+    //std::cout << "Insira uma palavra: ";
+    //std::getline(std::cin, str);
 
-    std::cout << arrow_f << trim_left(str) << arrow_b << std::endl;
-
-
-    std::cout << ast + "REVERSE" + ast << "\n";
-
-    std::cout << "Insira uma palavra: ";
-    std::cin >> str;
-
-    std::cout << arrow_f << reverse(str) << arrow_b << std::endl;
+    //std::cout << arrow_f << trim_left(str) << arrow_b << std::endl;
 
 
+    //std::cout << ast + "REVERSE" + ast << "\n";
 
+    //std::cout << "Insira uma palavra: ";
+    //std::getline(std::cin, str);
+
+    //std::cout << arrow_f << reverse(str) << arrow_b << std::endl;
+
+
+    //std::cout << ast + "REPLACE" + ast << "\n";
+    //std::string str;
+
+    //std::cout << "Insira uma palavra: ";
+    //std::getline(std::cin, str);
+
+    //std::cout << arrow_f << replace(str) << arrow_b << std::endl;
 
 
 } //<= Main

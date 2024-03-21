@@ -116,7 +116,7 @@ namespace easy_text {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-    std::string reverse(const std::string& str) {
+    std::string reverse(const std::string& str) { //<== FUNCIONA SO COM UMA PALAVRA
         std::string reversed = "";
         for (int i = str.length() - 1; i >= 0; i--) {
             reversed += str[i];
@@ -145,10 +145,15 @@ namespace easy_text {
      *    replace("ana avelar alves", 'a', 'A', 4, 9) => "ana AvelAr alves"
      *    replace("ana avelar", 'b', 'A') => "ana avelar"
     */
-    // std::string& replace(std::string& str, char ch1, char ch2, 
-    //                      int start = 0, int end = -1) {
-
-    // }
+    std::string& replace(std::string& str, char ch1, char ch2, 
+                         int start = 0, int end = -1) {
+        for (char& ch1 : str) {
+            if (str[ch1] == ch1) {
+                str[ch1] = ch2;
+            }
+        }    
+        return str;
+    }
 
     /**
      * Substitui em str todas as ocorrências da substring substr1 por substr2; 
