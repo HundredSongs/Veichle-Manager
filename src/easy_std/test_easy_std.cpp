@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <vector>
 #include <list>
 #include <map>
 #include <unordered_map>
 #include <algorithm>
 #include <stdexcept>
-#include <docopt/docopot.h>
+#include <docopt/docopt.h>
 
 #include "easy_utils.hpp"
 
