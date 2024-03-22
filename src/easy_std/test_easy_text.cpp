@@ -57,11 +57,11 @@ int main() {
     ///////////////////////////////////////////////////
     std::cout << ast + "trim" + ast << "\n\n";
 
-    std::string str1;
+    std::string str2;
     std::cout << "Insira uma palavra: ";
-    getline(std::cin, str1);
+    getline(std::cin, str2);
 
-    std::cout << trim(str1) << "//" << std::endl;
+    std::cout << trim(str2) << "//" << std::endl;
 
 
 } //<= Main
