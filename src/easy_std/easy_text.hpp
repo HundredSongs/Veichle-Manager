@@ -109,7 +109,7 @@ namespace easy_text {
      * Apara a string str à esquerda e à direita devolvendo essa string.
     */
 
-    std::string trim(std::string str) {
+    std::string& trim(std::string& str) {
 
         for(int i = str.size() - 1; i >= 0; i--){
             if(str[i] != ' '){ break; }
@@ -126,13 +126,12 @@ namespace easy_text {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-    std::string reverse(std::string& str) {
+    std::string& reverse(std::string& str) {
 
-        std::string rev;
         for(int i = 0; i < str.size(); i++) {
-            rev += str[str.length() - 1 - i];
+            str[i] += str[str.length() - 1 - i];
         }
-        return rev;
+        return str;
     }
 
     /**
