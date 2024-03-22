@@ -108,9 +108,21 @@ namespace easy_text {
     /**
      * Apara a string str à esquerda e à direita devolvendo essa string.
     */
-    // std::string& trim(std::string& str) {
 
-    // }
+    std::string& trim(std::string& str) {
+
+        std::string res = str;
+        std::size_t index;
+        int count = 1;
+
+        for(index = res.size() - 1; index >= 0; index--){
+            if(res[index] != ' ') break;
+            count++;
+        }
+        res.erase(index + 1, count);
+        trim_left(res);
+        return res;
+    }
 
     /**
      * Inverte a string str e devolve-a. Tal como com as funções trim, 
@@ -119,11 +131,14 @@ namespace easy_text {
      * de algorithm (como, por exemplo, std::reverse ...) ou de qualquer 
      * outra biblioteca.
     */
-//    std::string& reverse(std::string& str) {
-//    for (int i = 0; i < str.size(); i++) {
-//        str[str.length() - 1 - i];
-//        return str;
-//    }
+    std::string& reverse(std::string& str) {
+
+        std::string rev;
+        for(int i = 0; i < str.size(); i++) {
+            rev += str[str.length() - 1 - i];
+        }
+        return rev;
+    }
 
     /**
      * Devolve uma cópia invertida da string str com os caracteres 
