@@ -4,6 +4,7 @@
  * Desenvolvido por João Roque e Licínio Feliciano
 */
 
+#include <iostream>
 #include <string>
 
 #ifndef __EASY_TEXT_HPP__
