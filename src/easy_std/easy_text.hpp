@@ -14,6 +14,7 @@ namespace easy_text {
 
 
     /**
+     * IS_WHITE_SPACE (char)
      * Devolve true se o caractere ch for um caractere de espaçamento, ou seja, 
      * se for um dos seguintes: ' ', '\n', '\t' ou '\r').
     */
@@ -22,8 +23,11 @@ namespace easy_text {
     }
 
 
-    // Devolve true se todos os caractere da string str forem de espaçamento. 
-    // Deve utilizar a versão para um caractere.
+    /**
+     * IS_WHITE_SPACE (string)
+     * Devolve true se todos os caractere da string str forem de espaçamento. 
+     * Deve utilizar a versão para um caractere.
+    */
     bool is_white_space(const std::string& str){ 
         for(const char& ch : str){
             if(!is_white_space(ch)) return false;
@@ -33,14 +37,18 @@ namespace easy_text {
     
 
     /**
+     * IS_DIGIT (char)
      * Devolve true se o caractere ch for um dígito decimal.
     */
-    bool is_digit(char ch) {   // <== FUNCIONA
+    bool is_digit(char ch) {
         return ch >= '0' && ch <= '9';
     }
 
-    // Devolve true se todos os caractere da string str forem dígitos. 
-    // Deve utilizar a versão para um caractere.
+    /**
+     * IS_DIGIT (string)
+     * Devolve true se todos os caractere da string str forem dígitos. 
+     * Deve utilizar a versão para um caractere.
+    */
     bool is_digit(const std::string& str){
         for(const char& ch : str){
             if(!is_digit(ch)) return false;
@@ -48,15 +56,28 @@ namespace easy_text {
         return true;
     }
 
-
     /**
+     * TO_LOWER (char)
      * Converte uma letra maiúscula para minúscula; 
-     * implemente a versão complementar to_upper.
     */
     char to_lower(char ch) {
     return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
     }
 
+    /**
+     * TO_UPPER (char) 
+     * Converte uma letra minúscula para maiúscula;
+    */
+    char to_upper(char ch) {
+        return ch >= 'a' && ch <= 'z'? ch - ('a' - 'A') : ch;
+    }
+    
+    /**
+     * TO_LOWER (string)
+     * Converte uma letra maiúscula para minúscula;Esta função modifica a string recebida, 
+     * mas também devolve-a para que possa ser utilizada em expressões 
+     * do tipo string
+    */
     std::string& to_lower(std::string& str){
         for(char& ch : str){
             ch = to_lower(ch);
@@ -64,18 +85,10 @@ namespace easy_text {
         return str;
     }
 
-
     /**
-     * Converte uma letra maiúscula para minúscula; implemente a 
-     * versão complementar to_upper. Esta função modifica a string recebida, 
-     * mas também devolve-a para que possa ser utilizada em expressões 
-     * do tipo string
+     * TO_UPPER (string)
+     * implemente a versão complementar to_upper. 
     */
-
-    char to_upper(char ch) {
-        return ch >= 'a' && ch <= 'z'? ch - ('a' - 'A') : ch;
-    }
-    
     std::string& to_upper(std::string& str){
         for(char& ch : str){
             ch = to_upper(ch);
@@ -83,8 +96,8 @@ namespace easy_text {
         return str;
     }
 
-
     /**
+     * TRIM_LEFT (str)
      * Apara a string str à esquerda e devolve-a; implemente a 
      * versão complementar trim_right. "Aparar" uma string à esquerda consiste 
      * em remover os caracteres de espaçamento à esquerda, que estão entre o 
@@ -94,7 +107,7 @@ namespace easy_text {
      * Se a string não possuir caracteres de espaçamento à esquerda, 
      * então é simplesmente devolvida.
     */
-    std::string& trim_left(std::string& str) { //<== FUNCIONA
+    std::string& trim_left(std::string& str) {
 
         std::size_t index;
         for(index = 0; index < str.size(); index++){
@@ -106,13 +119,15 @@ namespace easy_text {
     }
 
     /**
+     * TRIM (string)
      * Apara a string str à esquerda e à direita devolvendo essa string.
     */
-
     std::string& trim(std::string& str) {
 
         for(int i = str.size() - 1; i >= 0; i--){
-            if(str[i] != ' '){ break; }
+            if(str[i] != ' ') {
+                break;
+            }
             str.pop_back();
         }
         trim_left(str);
@@ -120,6 +135,7 @@ namespace easy_text {
     }
 
     /**
+     * REVERSE (string)
      * Inverte a string str e devolve-a. Tal como com as funções trim, 
      * a string str é modifcada mas também é devolvida. 
      * Desenvolva o algoritmo de raiz, sem recorrer a quaisquer funções 
