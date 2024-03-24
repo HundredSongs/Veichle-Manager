@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <vector>
 
 #ifndef __EASY_TEXT_HPP__
 #define __EASY_TEXT_HPP__
@@ -62,7 +64,7 @@ namespace easy_text {
      * Converte uma letra maiúscula para minúscula; 
     */
     char to_lower(char ch) {
-    return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
+        return ch >= 'A' && ch <= 'Z'? ch + ('a' - 'A') : ch;
     }
 
     /**
@@ -111,8 +113,10 @@ namespace easy_text {
     std::string& trim_left(std::string& str) {
 
         std::size_t index;
-        for(index = 0; index < str.size(); index++){
-            if(str[index] != ' ') break;
+        for(index = 0; index < str.size(); index++) {
+            if(str[index] != ' ') {
+                break;
+            }
         }
 
         str.erase(0, index);
@@ -125,7 +129,7 @@ namespace easy_text {
     */
     std::string& trim(std::string& str) {
 
-        for(int i = str.size() - 1; i >= 0; i--){
+        for(int i = str.size() - 1; i >= 0; i--) {
             if(str[i] != ' ') {
                 break;
             }
@@ -144,20 +148,27 @@ namespace easy_text {
      * outra biblioteca.
     */
     std::string& reverse(std::string& str) {
-
-        for(int i = 0; i < str.size(); i++) {
+        for (int i = 0; i < str.size(); i++) {
             str[i] += str[str.length() - 1 - i];
         }
         return str;
     }
 
     /**
+     * REVERSED (string)
      * Devolve uma cópia invertida da string str com os caracteres 
      * por ordem inversa. Pode utilizar funções já feitas.
     */
-    // string reversed(const string& str) {
+    std::string reversed(const std::string& str) {
+        std::stringstream ss(str);
+        std::string word, text;
 
-    // }
+        while (ss >> word) {
+            reverse(word);
+            text += word + " ";
+        }
+        return text;
+    }
 
     /**
      * Substitui todas as ocorrências do caractere ch1 pelo caractere ch2; 

@@ -10,14 +10,12 @@ int main() {
     std::cout << ast + "IS_WHITE_SPACE" + ast << "\n\n";
 
     std::string text;
-    
     std::cout << "Insira um caractere: ";
     getline(std::cin, text);
     std::cout << is_white_space(text) << std::endl;
     
     /////////////////////////////////////////////////
     std::cout << ast + "IS_DIGIT" + ast << "\n\n";
-
 
     std::cout << "Insira um caractere: ";
     getline(std::cin, text);
@@ -46,7 +44,7 @@ int main() {
     std::cout << to_upper(text) << std::endl;
 
     /////////////////////////////////////////////////
-    std::cout << ast + "trim_left" + ast << "\n\n";
+    std::cout << ast + "TRIM_LEFT" + ast << "\n\n";
 
     std::string str;
     std::cout << "Insira uma palavra: ";
@@ -55,13 +53,20 @@ int main() {
     std::cout << trim_left(str) << std::endl;
 
     ///////////////////////////////////////////////////
-    std::cout << ast + "trim" + ast << "\n\n";
+    std::cout << ast + "TRIM" + ast << "\n\n";
 
     std::string str2;
     std::cout << "Insira uma palavra: ";
     getline(std::cin, str2);
 
-    std::cout << trim(str2) << "//" << std::endl;
+    std::cout << '>' << trim(str2) << '<' << std::endl;
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "REVERSED" + ast << "\n\n";
+    std::string str3;
+    std::cout << "Insira uma frase: ";
+    getline(std::cin, str3);
+    std::cout << reversed(str3) << std::endl;
 
 
 } //<= Main
