@@ -168,6 +168,7 @@ namespace easy_text {
             reverse(word);
             text += word + " ";
         }
+        text.pop_back();
         return text;
     }
 
