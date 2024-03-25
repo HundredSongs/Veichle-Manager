@@ -185,10 +185,15 @@ namespace easy_text {
      *    replace("ana avelar alves", 'a', 'A', 4, 9) => "ana AvelAr alves"
      *    replace("ana avelar", 'b', 'A') => "ana avelar"
     */
-    // std::string& replace(std::string& str, char ch1, char ch2, 
-    //                      int start = 0, int end = -1) {
+    std::string& replace(std::string& str, char ch1, char ch2, int start = 0, int end = -1) {
+        
+        int _end = end == -1 ? str.size() - 1 : end ;
 
-    // }
+        for(int i = start; i <= _end; i++){
+            str[i] = str[i] == ch1 ? str[i] = ch2 : str[i] ;
+        }
+        return str;
+    }
 
     /**
      * Substitui em str todas as ocorrências da substring substr1 por substr2; 

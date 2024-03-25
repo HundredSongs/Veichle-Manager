@@ -2,6 +2,8 @@
 #include <string>
 
 #include "easy_text.hpp"
+
+using namespace std;
 using namespace easy_text;
 
 int main() {
@@ -74,6 +76,15 @@ int main() {
     std::cout << "Insira uma frase: ";
     getline(std::cin, str4);
     std::cout << reversed(str4) << "<" << std::endl;
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "REPLACE" + ast << "\n\n";
+
+    std::cout << replace("ana avelar"s, 'a', 'A') <<  std::endl;                //"AnA AvelAr"
+    std::cout << replace("ana avelar"s, 'a', 'A', 4) <<  std::endl;             //"ana AvelAr"
+    std::cout << replace("ana avelar"s, 'a', 'A', 0, 2) <<  std::endl;          //"AnA avelar"
+    std::cout << replace("ana avelar alves"s, 'a', 'A', 4, 9) <<  std::endl;    //"ana AvelAr alves"
+    std::cout << replace("ana avelar"s, 'b', 'A') <<  std::endl;                //"ana avelar"
 
 
 } //<= Main
