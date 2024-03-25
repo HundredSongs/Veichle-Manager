@@ -32,8 +32,10 @@ namespace easy_std {
      * Deve utilizar a versão para um caractere.
     */
     bool is_white_space(const std::string& str){ 
-        for(const char& ch : str){
-            if(!is_white_space(ch)) return false;
+        for (const char& ch : str){
+            if (!is_white_space(ch)) {
+                return false;
+            }
         }
         return true;
     }
@@ -53,8 +55,10 @@ namespace easy_std {
      * Deve utilizar a versão para um caractere.
     */
     bool is_digit(const std::string& str){
-        for(const char& ch : str){
-            if(!is_digit(ch)) return false;
+        for (const char& ch : str){
+            if (!is_digit(ch)) {
+                return false;
+            }
         }
         return true;
     }
@@ -82,7 +86,7 @@ namespace easy_std {
      * do tipo string
     */
     std::string& to_lower(std::string& str){
-        for(char& ch : str){
+        for (char& ch : str){
             ch = to_lower(ch);
         }
         return str;
@@ -93,7 +97,7 @@ namespace easy_std {
      * implemente a versão complementar to_upper. 
     */
     std::string& to_upper(std::string& str){
-        for(char& ch : str){
+        for (char& ch : str){
             ch = to_upper(ch);
         }
         return str;
@@ -113,12 +117,11 @@ namespace easy_std {
     std::string& trim_left(std::string& str) {
 
         std::size_t index;
-        for(index = 0; index < str.size(); index++) {
-            if(str[index] != ' ') {
+        for (index = 0; index < str.size(); index++) {
+            if (str[index] != ' ') {
                 break;
             }
         }
-
         str.erase(0, index);
         return str;
     }
@@ -129,8 +132,8 @@ namespace easy_std {
     */
     std::string& trim(std::string& str) {
 
-        for(int i = str.size() - 1; i >= 0; i--) {
-            if(str[i] != ' ') {
+        for (int i = str.size() - 1; i >= 0; i--) {
+            if (str[i] != ' ') {
                 break;
             }
             str.pop_back();
@@ -148,7 +151,9 @@ namespace easy_std {
      * outra biblioteca.
     */
     std::string& reverse(std::string& str) {
+
         std::string cp(str);
+
         for (int i = 0; i < cp.size(); i++) {
             str[i] = cp[cp.size() - 1 - i];
         }
@@ -161,6 +166,7 @@ namespace easy_std {
      * por ordem inversa. Pode utilizar funções já feitas.
     */
     std::string reversed(const std::string& str) {
+
         std::stringstream ss(str);
         std::string word, text;
 
@@ -189,7 +195,7 @@ namespace easy_std {
         
         int _end = end == -1 ? str.size() - 1 : end ;
 
-        for(int i = start; i <= _end; i++){
+        for (int i = start; i <= _end; i++){
             str[i] = str[i] == ch1 ? str[i] = ch2 : str[i] ;
         }
         return str;
@@ -225,23 +231,20 @@ namespace easy_std {
         bool match = true;
         int pos = 0;
 
-        for(int i = start; i <= _end; i++){
-
+        for (int i = start; i <= _end; i++){
             match = true;
             pos = i;
-
-            for(int j = 0; j < substr1.size(); j++){
-                if(cp[pos + j] != substr1[j]){
+            for (int j = 0; j < substr1.size(); j++){
+                if (cp[pos + j] != substr1[j]){
                     match = false;
                     break;
                 }
             }
-
-            if(match == true){
+            if (match == true){
                 str += substr2;
                 i += substr1.size() - 1;
             }
-            else{
+            else {
                 str += cp[i];
             }
 
@@ -272,36 +275,34 @@ namespace easy_std {
 
         bool eql = true;
 
-        for(int i = 0; i < str.size(); i++){
+        for (int i = 0; i < str.size(); i++){
 
             eql = true;
 
-            for(int j = 0; j < delim.size(); j++){
-                if(str[i + j] != delim[j]){
+            for (int j = 0; j < delim.size(); j++){
+                if (str[i + j] != delim[j]){
                     eql = false;
                     break;
                 }
             }
-
-            if(delim.size() == 0){
+            if (delim.size() == 0){
                 temp += str[i];
                 splt.emplace_back(temp);
                 temp = "";
             }
-            else if(eql == true){
+            else if (eql == true){
                 splt.emplace_back(temp);
                 i += delim.size() - 1;
                 temp = "";
             }
-            else if(i == str.size() - 1){
+            else if (i == str.size() - 1){
                 temp += str[i];
                 splt.emplace_back(temp);
             }
-            else{
+            else {
                 temp += str[i];
             }
         }
-
         return splt;
     }
 
@@ -325,10 +326,9 @@ namespace easy_std {
         
         std::string res = parts[0];
 
-        for(int i = 1; i < parts.size(); i++){
+        for (int i = 1; i < parts.size(); i++) {
             res += delim + parts[i];
         }
-
         return res;
     }
 
