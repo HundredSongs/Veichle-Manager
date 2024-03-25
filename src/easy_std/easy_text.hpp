@@ -219,6 +219,9 @@ namespace easy_text {
 
         int _end = end == -1 ? str.size() - 1 : end ;
 
+        std::string cp(str);
+        str.clear();
+
         bool match = true;
         int pos = 0;
 
@@ -228,15 +231,18 @@ namespace easy_text {
             pos = i;
 
             for(int j = 0; j < substr1.size(); j++){
-                if(str[pos + j] != substr1[j]){
+                if(cp[pos + j] != substr1[j]){
                     match = false;
                     break;
                 }
             }
 
             if(match == true){
-                str.erase(pos, substr1.size());
-                str.insert(pos, substr2);
+                str += substr2;
+                i += substr1.size() - 1;
+            }
+            else{
+                str += cp[i];
             }
 
         }
