@@ -264,10 +264,46 @@ namespace easy_text {
      *    split("-ABC---DEF--GHI-", "--") => {"-ABC", "-DEF", "GHI-"}
      *    split("ABCDEF", "") => {"A", "B", "C", "D", "E", "F"}
     */
-    // std::vector<std::string> split(const std::string& str, 
-    //                                const std::string& delim) {
+    std::vector<std::string> split(const std::string& str, 
+                                   const std::string& delim) {
 
-    // }
+        std::string temp;
+        std::vector<std::string> splt;
+
+        bool eql = true;
+
+        for(int i = 0; i < str.size(); i++){
+
+            eql = true;
+
+            for(int j = 0; j < delim.size(); j++){
+                if(str[i + j] != delim[j]){
+                    eql = false;
+                    break;
+                }
+            }
+
+            if(delim.size() == 0){
+                temp += str[i];
+                splt.emplace_back(temp);
+                temp = "";
+            }
+            else if(eql == true ){
+                splt.emplace_back(temp);
+                i += delim.size() - 1;
+                temp = "";
+            }
+            else if(i == str.size() - 1){
+                temp += str[i];
+                splt.emplace_back(temp);
+            }
+            else{
+                temp += str[i];
+            }
+        }
+
+        return splt;
+    }
 
     /**
      * O oposto de split. "Une" as várias strings no vector parts com o 

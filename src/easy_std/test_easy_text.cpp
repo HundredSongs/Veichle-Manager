@@ -5,8 +5,6 @@
 
 using namespace std;
 using namespace easy_text;
-using std::literals::operator""s;
-
 
 int main() {
     /////////////////////////////////////////////////
@@ -74,7 +72,7 @@ int main() {
 
     ///////////////////////////////////////////////////
     std::cout << ast + "REVERSED" + ast << "\n\n";
-    std::string str4;
+    std::string str4 = "test";
     std::cout << "Insira uma frase: ";
     getline(std::cin, str4);
     std::cout << reversed(str4) << "<" << std::endl;
@@ -109,5 +107,59 @@ int main() {
     text18 = "ana mariana";
     std::cout << replace(text18, "ana", "anabela") << std::endl;        //"anabela marianabela"
     std::cout << replace(text18b, "ana", "") << std::endl;              //"di mari"
+
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "SPLIT" + ast << "\n\n";
+
+
+    std::string text19 = "ABC.DEF.GHI";
+    std::vector<std::string> vec19 = split(text19, ".");   //{"ABC", "DEF", "GHI"}
+    for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = "ABC.DEF.GHI";
+    vec19 = split(text19, "+");   //{"ABC.DEF.GHI"}
+    for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = "ABC.DEF...GHI";
+    vec19 = split(text19, ".");   //{"ABC", "DEF", "", "", "GHI"}
+     for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = ".ABC.DEF.GHI.";
+    vec19 = split(text19, ".");   //{"", "ABC", "DEF", "GHI", ""}
+     for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = "ABC--DEF--GHI";
+    vec19 = split(text19, "--");   //{"ABC", "DEF", "GHI"}
+     for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = "-ABC---DEF--GHI-";
+    vec19 = split(text19, "--");   //{"-ABC", "-DEF", "GHI-"}
+     for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
+
+    text19 = "ABCDEF";
+    vec19 = split(text19, "");   //{"A", "B", "C", "D", "E", "F"}
+     for(int i = 0; i < vec19.size(); i++){
+        std::cout << vec19[i] << " ";
+    }
+    std::cout << "\n";
 
 } //<= Main
