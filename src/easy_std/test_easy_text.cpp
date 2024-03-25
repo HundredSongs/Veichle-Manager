@@ -5,6 +5,8 @@
 
 using namespace std;
 using namespace easy_text;
+using std::literals::operator""s;
+
 
 int main() {
     /////////////////////////////////////////////////
@@ -80,11 +82,22 @@ int main() {
     ///////////////////////////////////////////////////
     std::cout << ast + "REPLACE" + ast << "\n\n";
 
-    std::cout << replace("ana avelar"s, 'a', 'A') <<  std::endl;                //"AnA AvelAr"
-    std::cout << replace("ana avelar"s, 'a', 'A', 4) <<  std::endl;             //"ana AvelAr"
-    std::cout << replace("ana avelar"s, 'a', 'A', 0, 2) <<  std::endl;          //"AnA avelar"
-    std::cout << replace("ana avelar alves"s, 'a', 'A', 4, 9) <<  std::endl;    //"ana AvelAr alves"
-    std::cout << replace("ana avelar"s, 'b', 'A') <<  std::endl;                //"ana avelar"
+    std::string text17 = "ana avelar";
+    std::string text17b = "ana avelar alves";
+
+    std::cout << replace(text17, 'a', 'A') <<  std::endl;
+    text17 = "ana avelar";               
+    //"AnA AvelAr"
+    std::cout << replace(text17, 'a', 'A', 4) <<  std::endl;
+    text17 = "ana avelar";             
+    //"ana AvelAr"
+    std::cout << replace(text17, 'a', 'A', 0, 2) <<  std::endl;
+    text17 = "ana avelar";         
+    //"AnA avelar"
+    std::cout << replace(text17b, 'a', 'A', 4, 9) <<  std::endl; 
+    //"ana AvelAr alves"
+    std::cout << replace(text17, 'b', 'A') <<  std::endl;                
+    //"ana avelar"
 
 
 } //<= Main
