@@ -162,4 +162,13 @@ int main() {
     }
     std::cout << "\n";
 
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "JOIN" + ast << "\n\n";
+
+    std::cout << join({"ABC", "DEF", "GHI"}, "+") << std::endl;        //"ABC+DEF+GHI"
+    std::cout << join({"ABC"}, ".") << std::endl;        //"ABC"
+    std::cout << join({"ABC", "DEF"}, ".") << std::endl;        //"ABC.DEF"
+    std::cout << join(split("ABC.DEF.GHI", "."), "+") << std::endl;        //"ABC+DEF+GHI"
+
 } //<= Main

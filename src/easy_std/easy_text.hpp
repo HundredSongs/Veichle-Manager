@@ -288,7 +288,7 @@ namespace easy_text {
                 splt.emplace_back(temp);
                 temp = "";
             }
-            else if(eql == true ){
+            else if(eql == true){
                 splt.emplace_back(temp);
                 i += delim.size() - 1;
                 temp = "";
@@ -321,10 +321,16 @@ namespace easy_text {
      *    join({"ABC", "DEF"}, ".") => "ABC.DEF"
      *    join(split("ABC.DEF.GHI", "."), "+")) => "ABC+DEF+GHI"
     */
-    // std::string join(const std::vector<std::string>& parts, 
-    //                   const std::string& delim) {
+    std::string join(const std::vector<std::string>& parts, const std::string& delim) {
         
-    // }
+        std::string res = parts[0];
+
+        for(int i = 1; i < parts.size(); i++){
+            res += delim + parts[i];
+        }
+
+        return res;
+    }
 
 } //<= namespace
 
