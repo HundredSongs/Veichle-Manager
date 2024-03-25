@@ -13,7 +13,7 @@
 #define __EASY_TEXT_HPP__
 
 
-namespace easy_text {
+namespace easy_std {
 
 
     /**
