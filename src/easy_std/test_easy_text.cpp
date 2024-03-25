@@ -85,7 +85,7 @@ int main() {
     std::string text17 = "ana avelar";
     std::string text17b = "ana avelar alves";
 
-    std::cout << replace(text17, 'a', 'A') <<  std::endl;
+    std::cout << replace(text17, 'a', 'A') << std::endl;
     text17 = "ana avelar";               
     //"AnA AvelAr"
     std::cout << replace(text17, 'a', 'A', 4) <<  std::endl;
@@ -99,5 +99,15 @@ int main() {
     std::cout << replace(text17, 'b', 'A') <<  std::endl;                
     //"ana avelar"
 
+    ///////////////////////////////////////////////////
+    std::cout << ast + "REPLACE STR" + ast << "\n\n";
+
+    std::string text18 = "ana mariana";
+    std::string text18b = "diana mariana";
+
+    std::cout << replace(text18, "ana", "ANA") << std::endl;            //"ANA mariANA"
+    text18 = "ana mariana";
+    std::cout << replace(text18, "ana", "anabela") << std::endl;        //"anabela marianabela"
+    std::cout << replace(text18b, "ana", "") << std::endl;              //"di mari"
 
 } //<= Main

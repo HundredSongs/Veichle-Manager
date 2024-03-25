@@ -215,11 +215,34 @@ namespace easy_text {
      *    replace("ana mariana", "ana", "anabela") => "anabela marianabela"
      *    replace("diana mariana", "ana", "") => "di mari"
     */
-    // std::string& replace(std::string& str, const std::string& substr1, 
-    //                      const std::string& substr2, int start = 0, 
-    //                      int end = -1) {
+    std::string& replace(std::string& str, const std::string& substr1, const std::string& substr2, int start = 0, int end = -1) {
 
-    // }
+        int _end = end == -1 ? str.size() - 1 : end ;
+
+        bool match = true;
+        int pos = 0;
+
+        for(int i = start; i <= _end; i++){
+
+            match = true;
+            pos = i;
+
+            for(int j = 0; j < substr1.size(); j++){
+                if(str[pos + j] != substr1[j]){
+                    match = false;
+                    break;
+                }
+            }
+
+            if(match == true){
+                str.erase(pos, substr1.size());
+                str.insert(pos, substr2);
+            }
+
+        }
+
+        return str;
+    }
 
     /**
      * "Parte" uma string em pedaços delimitados por delim. 
