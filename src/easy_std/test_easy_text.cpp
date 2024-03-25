@@ -62,11 +62,18 @@ int main() {
     std::cout << '>' << trim(str2) << '<' << std::endl;
 
     ///////////////////////////////////////////////////
-    std::cout << ast + "REVERSED" + ast << "\n\n";
+    std::cout << ast + "REVERSE" + ast << "\n\n";
     std::string str3;
     std::cout << "Insira uma frase: ";
     getline(std::cin, str3);
-    std::cout << reversed(str3) << std::endl;
+    std::cout << reverse(str3) << std::endl;
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "REVERSED" + ast << "\n\n";
+    std::string str4;
+    std::cout << "Insira uma frase: ";
+    getline(std::cin, str4);
+    std::cout << reversed(str4) << "<" << std::endl;
 
 
 } //<= Main

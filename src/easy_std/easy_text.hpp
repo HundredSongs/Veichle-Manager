@@ -148,8 +148,9 @@ namespace easy_text {
      * outra biblioteca.
     */
     std::string& reverse(std::string& str) {
-        for (int i = 0; i < str.size(); i++) {
-            str[i] += str[str.length() - 1 - i];
+        std::string cp(str);
+        for (int i = 0; i < cp.size(); i++) {
+            str[i] = cp[cp.size() - 1 - i];
         }
         return str;
     }
