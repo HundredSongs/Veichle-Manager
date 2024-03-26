@@ -127,6 +127,24 @@ namespace easy_std {
     }
 
     /**
+     * TRIM_RIGHT (str)
+     * Apara a string str à direita e devolve-a. 
+     * Se a string não possuir caracteres de espaçamento à direita, 
+     * então é simplesmente devolvida.
+    */
+    std::string& trim_right(std::string& str) {
+
+        std::size_t index;
+        for (index = str.size() -1; index >= 0; index--) {
+            if (str[index] != ' ') {
+                break;
+            }
+        str.pop_back();
+        }
+        return str;
+    }
+
+    /**
      * TRIM (string)
      * Apara a string str à esquerda e à direita devolvendo essa string.
     */

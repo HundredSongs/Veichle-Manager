@@ -1,10 +1,9 @@
 #include <iostream>
-#include <string>
 
 #include "easy_text.hpp"
 
 using namespace std;
-using namespace easy_text;
+using namespace easy_std;
 
 int main() {
     /////////////////////////////////////////////////
@@ -14,12 +13,17 @@ int main() {
     std::string text;
     std::cout << "Insira um caractere: ";
     getline(std::cin, text);
-    std::cout << is_white_space(text) << std::endl;
-    
+
+    if (is_white_space(text) == true) {
+        std::cout << "True" << std::endl;
+    }
+    else {
+        std::cout << "False" << std::endl;
+    }
     /////////////////////////////////////////////////
     std::cout << ast + "IS_DIGIT" + ast << "\n\n";
 
-    std::cout << "Insira um caractere: ";
+    std::cout << "Insira um caractere alfanumérico: ";
     getline(std::cin, text);
     
     if (is_digit(text) == true) {
@@ -52,30 +56,39 @@ int main() {
     std::cout << "Insira uma palavra: ";
     getline(std::cin, str);
 
-    std::cout << trim_left(str) << std::endl;
+    std::cout << ">" << trim_left(str) << std::endl;
 
-    ///////////////////////////////////////////////////
-    std::cout << ast + "TRIM" + ast << "\n\n";
+    /////////////////////////////////////////////////
+    std::cout << ast + "TRIM_RIGHT" + ast << "\n\n";
 
     std::string str2;
     std::cout << "Insira uma palavra: ";
     getline(std::cin, str2);
 
-    std::cout << '>' << trim(str2) << '<' << std::endl;
+    std::cout << trim_right(str2) << "<" << std::endl;
+
+    ///////////////////////////////////////////////////
+    std::cout << ast + "TRIM" + ast << "\n\n";
+
+    std::string str3;
+    std::cout << "Insira uma palavra: ";
+    getline(std::cin, str3);
+
+    std::cout << '>' << trim(str3) << '<' << std::endl;
 
     ///////////////////////////////////////////////////
     std::cout << ast + "REVERSE" + ast << "\n\n";
-    std::string str3;
+    std::string str4;
     std::cout << "Insira uma frase: ";
-    getline(std::cin, str3);
-    std::cout << reverse(str3) << std::endl;
+    getline(std::cin, str4);
+    std::cout << reverse(str4) << std::endl;
 
     ///////////////////////////////////////////////////
     std::cout << ast + "REVERSED" + ast << "\n\n";
-    std::string str4 = "test";
+    std::string str5 = "test";
     std::cout << "Insira uma frase: ";
-    getline(std::cin, str4);
-    std::cout << reversed(str4) << "<" << std::endl;
+    getline(std::cin, str5);
+    std::cout << reversed(str5) << "<" << std::endl;
 
     ///////////////////////////////////////////////////
     std::cout << ast + "REPLACE" + ast << "\n\n";
