@@ -5,7 +5,6 @@
 */
 
 #include <iostream>
-#include <cmath>
 #include <random>
 #include <string>
 #include <vector>
@@ -95,14 +94,14 @@ namespace easy_std {
      * Os resultados são devolvidos num vector do tipo
      * da variável de retorno ou do tipo de chamamento
     */
-    template<typename T, typename Seq>
-    std::vector<T> sample(const Seq seq, int n) {
+    template<typename Seq, typename T>
+    std::vector<T> sample(const Seq& seq, int n) {
 
         Seq cp = seq;
         std::vector<int> nums;
         std::vector<T> res;
 
-        for(int i = 0; i <= n; i++){
+        for(int i = 0; i < n; i++){
 
             bool in = false;
             int roll = randint(0, cp.size() - 1);
@@ -120,7 +119,7 @@ namespace easy_std {
             }
         }
 
-        for(int i = 0; i <= n; i++){
+        for(int i = 0; i < n; i++){
             res.emplace_back(cp[nums[i]]);
         }
 

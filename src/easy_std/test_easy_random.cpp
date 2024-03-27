@@ -1,14 +1,5 @@
 #include <iostream>
-#include <string>
-#include <sstream>
-#include <fstream>
 #include <vector>
-#include <list>
-#include <map>
-#include <unordered_map>
-#include <algorithm>
-#include <stdexcept>
-#include <docopt/docopt.h>
 
 #include "easy_random.hpp"
 
@@ -22,18 +13,37 @@ int main() {
 
     std::vector<int> vec1 = {5, 8, 2, 99, 22, 45};
     std::cout << choice(vec1) << std::endl;
-
+    /////////////////////////////////////
     shuffle_(vec1);
 
     for(int i = 0; i < vec1.size(); i++){
         std::cout << vec1[i] << " ";
     }
     std::cout << std::endl;
-
+    //////////////////////////////////////
     auto vec2 = sample(vec1, 3);
     
     for(int i = 0; i < vec2.size(); i++){
         std::cout << vec2[i] << " ";
     }
     std::cout << std::endl;
+    ///////////////////////////////////////
+    std::vector<std::string> vec3 = {"one", "two", "three", "four", "five"};
+
+    auto vec4 = sample(vec3, 3);
+    
+    for(int i = 0; i < vec4.size(); i++){
+        std::cout << vec4[i] << " ";
+    }
+    std::cout << std::endl;
+    ///////////////////////////////////////
+    std::string str = "three";
+
+    auto vec5 = sample(str, 3);
+    
+    for(int i = 0; i < vec5.size(); i++){
+        std::cout << vec5[i] << " ";
+    }
+    std::cout << std::endl;
+
 }
