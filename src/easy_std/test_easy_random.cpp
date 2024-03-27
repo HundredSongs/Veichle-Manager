@@ -24,8 +24,16 @@ int main() {
     std::cout << choice(vec1) << std::endl;
 
     shuffle_(vec1);
+
     for(int i = 0; i < vec1.size(); i++){
         std::cout << vec1[i] << " ";
+    }
+    std::cout << std::endl;
+
+    auto vec2 = sample(vec1, 3);
+    
+    for(int i = 0; i < vec2.size(); i++){
+        std::cout << vec2[i] << " ";
     }
     std::cout << std::endl;
 }

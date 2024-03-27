@@ -18,7 +18,6 @@ namespace easy_std {
     // Variável global (interna) que representa o 
     // gerador de números aleatórios global:
     static std::mt19937 rand_gen(std::random_device{}());
-    // static std::mt19937 rand_gen;
 
     /**
      * Devolve um inteiro entre a e b inclusive, 
@@ -68,12 +67,11 @@ namespace easy_std {
         Seq cp = (seq);
         seq.clear();
 
-        bool in = false;
-
         for(int i = 0; i < cp.size(); i++){
 
-            in = false;
+            bool in = false;
             int roll = randint(0, cp.size() - 1);
+            
             for(const int& n : nums){
                 if(n == roll){
                     in = true;
@@ -98,8 +96,35 @@ namespace easy_std {
      * da variável de retorno ou do tipo de chamamento
     */
     template<typename T, typename Seq>
-    std::vector<T> sample(const Seq& seq, int n) {
+    std::vector<T> sample(const Seq seq, int n) {
 
+        Seq cp = seq;
+        std::vector<int> nums;
+        std::vector<T> res;
+
+        for(int i = 0; i <= n; i++){
+
+            bool in = false;
+            int roll = randint(0, cp.size() - 1);
+
+            for(const int& n : nums){
+                if(n == roll){
+                    in = true;
+                }
+            }
+            if(in == true){
+                i--;
+            }
+            else if(in == false){
+                nums.emplace_back(roll);
+            }
+        }
+
+        for(int i = 0; i <= n; i++){
+            res.emplace_back(cp[nums[i]]);
+        }
+
+        return res;
     }
 
 
