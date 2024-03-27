@@ -17,44 +17,43 @@ namespace easy_std {
 
     // Variável global (interna) que representa o 
     // gerador de números aleatórios global:
-    // static std::mt19937 rand_gen
+    static std::mt19937 rand_gen(std::random_device{}());
+    // static std::mt19937 rand_gen;
 
     /**
      * Devolve um inteiro entre a e b inclusive, 
      * de acordo com uma distribuição uniforme
     */
     int randint(int a, int b) {
-        std::mt19937 randGen(std::random_device{}());
         std::uniform_int_distribution<> dis(a, b);
-        return dis(randGen);
+        return dis(rand_gen);
     }
 
     /**
      * Devolve um número double aleatório entre a e b. 
      * Por omissão, a = 0.0 e b = 1.0.
     */
-    // double random(double a = 0.0, double b= 1.0) {
-    //     std::mt19937 randGen(std::random_device{}());
-    //     std::uniform_int_distribution<> dis(a, b);
-    //     return dis(randGen);
-    // }
+    double random(double a = 0.0, double b= 1.0) {
+        std::uniform_real_distribution<> dis(a, b);
+        return dis(rand_gen);
+    }
 
     /**
      * Fornece um novo valor semente para o gerador de 
      * número aleatório rand_gen.
     */
-    // void seed(int value) {
-    //     std::mt19937 randGen(std::random_device{}());
-    //     std::uniform_int_distribution<> dis(0, 100);
-    //     dis(randGen);
-    // }
+    void seed(int value) {
+        rand_gen.seed(value);
+    }
 
     /**
      * Escolhe aleatoriamente um elemento da sequência seq.
     */
     template<typename Seq>
     auto choice(const Seq& seq) {
-
+        int size = seq.size() - 1;
+        int res = randint(0, size);
+        return seq[res];
     }
 
     /**
@@ -65,6 +64,32 @@ namespace easy_std {
     template<typename Seq>
     void shuffle_(Seq& seq) {
 
+        std::vector<int> nums;
+        Seq cp = (seq);
+        seq.clear();
+
+        bool in = false;
+
+        for(int i = 0; i < cp.size(); i++){
+
+            in = false;
+            int roll = randint(0, cp.size() - 1);
+            for(const int& n : nums){
+                if(n == roll){
+                    in = true;
+                }
+            }
+            if(in == true){
+                i--;
+            }
+            else if(in == false){
+                nums.emplace_back(roll);
+            }
+        }
+
+        for(int i = 0; i < cp.size(); i++){
+            seq.emplace_back(cp[nums[i]]);
+        }
     }
 
     /**
