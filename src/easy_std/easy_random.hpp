@@ -103,14 +103,6 @@ namespace easy_std {
     }
 
 
-
-
-
-
-
-
-
-
 } //<= namespace
 
 #endif
