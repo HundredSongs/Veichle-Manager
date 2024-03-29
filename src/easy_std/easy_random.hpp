@@ -8,6 +8,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #ifndef __EASY_RANDOM_HPP__
 #define __EASY_RANDOM_HPP__
@@ -94,22 +95,22 @@ namespace easy_std {
      * Os resultados são devolvidos num vector do tipo
      * da variável de retorno ou do tipo de chamamento
     */
-    template<typename T>
-    std::vector<T> sample(const std::vector<T>& seq, int n) {
+    template<typename Seq>
+    Seq sample(const Seq& seq, int n) {
 
-        std::vector<T> cp = seq;
+        Seq copy = seq;
         std::vector<int> nums;
-        std::vector<T> res;
+        Seq result;
 
         n = n > seq.size() ? seq.size() : n ;
 
         for(int i = 0; i < n; i++){
 
             bool in = false;
-            int roll = randint(0, cp.size() - 1);
+            int roll = randint(0, copy.size() - 1);
 
-            for(const int& n : nums){
-                if(n == roll){
+            for(const int& num : nums){
+                if(num == roll){
                     in = true;
                 }
             }
@@ -122,10 +123,10 @@ namespace easy_std {
         }
 
         for(int i = 0; i < n; i++){
-            res.emplace_back(cp[nums[i]]);
+            result.emplace_back(copy[nums[i]]);
         }
 
-        return res;
+        return result;
     }
 
 
