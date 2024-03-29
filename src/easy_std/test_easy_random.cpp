@@ -36,14 +36,5 @@ int main() {
         std::cout << vec4[i] << " ";
     }
     std::cout << std::endl;
-    ///////////////////////////////////////
-    std::string str = "three";
-
-    auto vec5 = sample(str, 3);
-    
-    for(int i = 0; i < vec5.size(); i++){
-        std::cout << vec5[i] << " ";
-    }
-    std::cout << std::endl;
 
 }

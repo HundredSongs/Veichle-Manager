@@ -94,10 +94,10 @@ namespace easy_std {
      * Os resultados são devolvidos num vector do tipo
      * da variável de retorno ou do tipo de chamamento
     */
-    template<typename Seq, typename T>
-    std::vector<T> sample(const Seq& seq, int n) {
+    template<typename T>
+    std::vector<T> sample(const std::vector<T>& seq, int n) {
 
-        Seq cp = seq;
+        std::vector<T> cp = seq;
         std::vector<int> nums;
         std::vector<T> res;
 
