@@ -30,7 +30,7 @@ int main() {
     ///////////////////////////////////////
     std::vector<std::string> vec3 = {"one", "two", "three", "four", "five"};
 
-    auto vec4 = sample(vec3, 3);
+    auto vec4 = sample(vec3, 99);
     
     for(int i = 0; i < vec4.size(); i++){
         std::cout << vec4[i] << " ";

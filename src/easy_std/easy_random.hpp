@@ -101,6 +101,8 @@ namespace easy_std {
         std::vector<int> nums;
         std::vector<T> res;
 
+        n = n > seq.size() ? seq.size() : n ;
+
         for(int i = 0; i < n; i++){
 
             bool in = false;
