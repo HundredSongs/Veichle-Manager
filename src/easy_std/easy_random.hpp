@@ -95,19 +95,19 @@ namespace easy_std {
      * Os resultados são devolvidos num vector do tipo
      * da variável de retorno ou do tipo de chamamento
     */
-    template<typename Seq>
-    Seq sample(const Seq& seq, int n) {
+    template<typename T, typename Seq>
+    std::vector<T> sample(const Seq& seq, int n) {
 
-        Seq copy = seq;
+        // std::vector<T> copy = seq;
         std::vector<int> nums;
-        Seq result;
+        std::vector<T> result;
 
         n = n > seq.size() ? seq.size() : n ;
 
         for(int i = 0; i < n; i++){
 
             bool in = false;
-            int roll = randint(0, copy.size() - 1);
+            int roll = randint(0, seq.size() - 1);
 
             for(const int& num : nums){
                 if(num == roll){
@@ -123,7 +123,7 @@ namespace easy_std {
         }
 
         for(int i = 0; i < n; i++){
-            result.emplace_back(copy[nums[i]]);
+            result.emplace_back(seq[nums[i]]);
         }
 
         return result;

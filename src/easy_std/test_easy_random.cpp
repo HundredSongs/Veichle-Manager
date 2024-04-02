@@ -23,7 +23,7 @@ int main() {
     }
     std::cout << std::endl;
     //////////////////////////////////////
-    std::vector<int> vec2 = easy_std::sample(vec1, 3);
+    std::vector<int> vec2 = sample<int>(vec1, 3);
     
     for(int i = 0; i < vec2.size(); i++){
         std::cout << vec2[i] << " ";
@@ -32,11 +32,10 @@ int main() {
     ///////////////////////////////////////
     std::vector<std::string> vec3 = {"one", "two", "three", "four", "five"};
 
-    std::vector<std::string> vec4 = sample(vec3, 99);
+    std::vector<std::string> vec4 = sample<std::string>(vec3, 99);
     
     for(int i = 0; i < vec4.size(); i++){
         std::cout << vec4[i] << " ";
     }
     std::cout << std::endl;
-
 }
