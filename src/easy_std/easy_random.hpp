@@ -98,7 +98,6 @@ namespace easy_std {
     template<typename T, typename Seq>
     std::vector<T> sample(const Seq& seq, int n) {
 
-        // std::vector<T> copy = seq;
         std::vector<int> nums;
         std::vector<T> result;
 
