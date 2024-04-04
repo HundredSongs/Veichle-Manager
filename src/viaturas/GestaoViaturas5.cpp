@@ -33,6 +33,11 @@ using money = boost::multiprecision::cpp_dec_float_50;
 
 const std::string CSV_DELIM = "|";
 
+// Files /////////////////////////////////////////////
+std::ifstream file("viaturas.csv");
+std::ofstream csv("output.csv");
+
+
 class AttrViaturaInvalido : public invalid_argument {  // class AttrViaturaInvalido extends IllegalArgumentExceptin
     using invalid_argument::invalid_argument;   
 };
@@ -90,7 +95,7 @@ public:
         );
     }
 
-    string to_csv() {
+    string to_csv() const {
         return utils::join(
             {
                 this->matricula,     // Java: String.format("%s", this.id)
@@ -103,7 +108,7 @@ public:
     }
 
 
-    void mostra() {
+    void mostra() const {
         print("Matricula -> {} | Marca/Modelo -> {}/{}\n", 
               this->matricula, this->marca, this->modelo);
     }
@@ -146,7 +151,7 @@ public:
 
     // Afectar / Mostrar Variaveis Privadas ////////////
 
-    std::string get_matricula() {
+    std::string get_matricula() const {
         return this->matricula;
     }
 
@@ -155,7 +160,7 @@ public:
     }
 
 
-    std::string get_marca() {
+    std::string get_marca() const {
         return this->marca;
     }
 
@@ -164,7 +169,7 @@ public:
     }
 
 
-    std::string get_modelo() {
+    std::string get_modelo() const {
         return this->modelo;
     }
 
@@ -173,7 +178,7 @@ public:
     }
 
 
-    std::string get_data() {
+    std::string get_data() const {
         return this->data;
     }
 
@@ -192,62 +197,82 @@ private:
 
 };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//       CATÁLOGO DE PRODUTOS (PRODUCT COLLECTION)
+//
+////////////////////////////////////////////////////////////////////////////////
+
+class DuplicateValue : public invalid_argument {
+    using invalid_argument::invalid_argument;
+};
+
+class VoituresCollection {
+
+public:
+
+    void add(const Viatura& viat) {
+        auto new_viat_id = viat.get_matricula();
+        if (this->search_by_id(new_viat_id)) {
+            throw DuplicateValue(format("Já existe uma viatura com a matricula {}\n", new_viat_id));
+        }
+        this->viaturas.emplace_back(viat);
+    }
+
+    optional<Viatura> search_by_id(std::string matricula) {
+        for (const auto& viat : this->viaturas) {
+            if (viat.get_matricula() == matricula) {
+                return viat;
+            }
+        }
+        return {};    // OU return nullopt;
+    }
+
+    void _dump() {
+        for (const auto& viat : this->viaturas) {
+            viat.mostra();
+            print("{}\n", string(10, '#'));
+        }
+    }
+
+    void save() {
+        for (const auto& viat : this->viaturas) {
+            csv << viat.to_csv() << "\n";
+        }
+    }
+
+private:
+
+    vector<Viatura> viaturas;
+
+};
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//       MAIN
+//
+////////////////////////////////////////////////////////////////////////////////
 
 int main() {
 
     std::string line;
-    // std::ifstream file("viaturas.csv");
-    std::ofstream csv("output.csv");
 
-    // while(std::getline(file, line)){
-    //     if(line.find("//") == 0 || line.find("##") == 0 || line == "") {
-    //         continue;
-    //     }
-    //     csv << line << std::endl;
-    // }
+    VoituresCollection viaturas;
 
+    while(std::getline(file, line)){
+        if(line.find("//") == 0 || line.find("##") == 0 || line == "") {
+            continue;
+        }
+        viaturas.add(Viatura::from_csv(line));
+    }
 
-    Viatura viat1(
-        "10-XY-20",
-        "Opel",
-        "Corsa XL",
-        "2019-10-15"
-    );
-    viat1.mostra();
-
-    Viatura viat2(
-        "20-PQ-15",
-        "Mercedes",
-        "300SL",
-        "2017-05-31"
-    );
-    viat2.mostra();
-
-    Viatura viat3(
-        "20-PQ-15",
-        "Mercedes",
-        "300SL"
-    );
-    viat3.mostra();
-
-    Viatura viat4 = Viatura::from_csv("10-XY-20|Opel|Corsa XL|2019-10-15");
-    viat4.mostra();
-
-    Viatura viat5("45-YO-01", "Chocolate Regina", "15");
-    viat5.mostra();
-
-
-    csv << viat1.to_csv() << '\n';
-    csv << viat2.to_csv() << '\n';
-    csv << viat3.to_csv() << '\n';
-    csv << viat4.to_csv() << '\n';
-    csv << viat5.to_csv() << '\n';
-
+    
     std::cout << "\n\n***Demonstracao terminada.*** \nDeseja utilizar as funcionalidades do programa? (y/n)";
     char option;
 
     while (true) {
-        std::cin >> option;
+        option = getchar();
         if (option == 'y') {
             while (true) {
 
@@ -261,11 +286,16 @@ int main() {
                 std::cin >> option2;
                 
                 switch(option2){
-                    //case '1': ;
-                    //case '2': ;
-                    //case '3': ;
-                    //case '4': ;
-                    //case '5': ;
+                    case '1': 
+                        viaturas._dump();
+
+                    case '2': ;
+                    case '3': ;
+                    case '4': ;
+
+                    case '5': 
+                        viaturas.save();
+                        
                     default:
                         std::cout << "Opcao invalida.";
                         break;
@@ -281,6 +311,7 @@ int main() {
         else {
             std::cout << "Opcao invalida.";
         }
+
     } // while 1
 
 } // main
