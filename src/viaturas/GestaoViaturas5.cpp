@@ -272,7 +272,9 @@ int main() {
     char option;
 
     while (true) {
+
         option = getchar();
+        
         if (option == 'y') {
             while (true) {
 
@@ -282,8 +284,9 @@ int main() {
                 std::cout << "3: Inserir viatura" << std::endl;
                 std::cout << "4: Remover viatura" << std::endl;
                 std::cout << "5: Guardar alteracoes" << std::endl;
+
                 char option2;
-                std::cin >> option2;
+                option2 = getchar();
                 
                 switch(option2){
                     case '1': 
@@ -295,7 +298,7 @@ int main() {
 
                     case '5': 
                         viaturas.save();
-                        
+
                     default:
                         std::cout << "Opcao invalida.";
                         break;
