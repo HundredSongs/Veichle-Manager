@@ -243,4 +243,44 @@ int main() {
     csv << viat4.to_csv() << '\n';
     csv << viat5.to_csv() << '\n';
 
-}
+    std::cout << "\n\n***Demonstracao terminada.*** \nDeseja utilizar as funcionalidades do programa? (y/n)";
+    char option;
+
+    while (true) {
+        std::cin >> option;
+        if (option == 'y') {
+            while (true) {
+
+                std::cout << "*** Gestao de Viaturas ***" << std::endl;
+                std::cout << "1: Listagem" << std::endl;
+                std::cout << "2: Pesquisar" << std::endl;
+                std::cout << "3: Inserir viatura" << std::endl;
+                std::cout << "4: Remover viatura" << std::endl;
+                std::cout << "5: Guardar alteracoes" << std::endl;
+                char option2;
+                std::cin >> option2;
+                
+                switch(option2){
+                    //case '1': ;
+                    //case '2': ;
+                    //case '3': ;
+                    //case '4': ;
+                    //case '5': ;
+                    default:
+                        std::cout << "Opcao invalida.";
+                        break;
+                
+                }
+
+            } //while 2
+
+        }
+        else if (option == 'n') {
+            return 0;
+        }
+        else {
+            std::cout << "Opcao invalida.";
+        }
+    } // while 1
+
+} // main
