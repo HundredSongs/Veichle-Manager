@@ -19,6 +19,9 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <optional>
+#include <map>
+
 #include <fstream>
 #include <fmt/format.h>
 
@@ -285,7 +288,7 @@ int main() {
                 std::cout << "4: Remover viatura" << std::endl;
                 std::cout << "5: Guardar alteracoes" << std::endl;
 
-                char option2;
+                char option2 = ' ';
                 option2 = getchar();
                 
                 switch(option2){
