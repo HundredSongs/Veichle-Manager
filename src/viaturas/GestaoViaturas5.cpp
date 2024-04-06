@@ -7,8 +7,8 @@
  *     - Guardar o catálogo em ficheiro
  *
 * v4: 1) Construtor alternativo
- *     2) Construtor com nome e conversor para esse formato: from_csv e to_csv
- *     3) Métodos estáticos
+ *    2) Construtor com nome e conversor para esse formato: from_csv e to_csv
+ *    3) Métodos estáticos
 */
 
 // matricula (str), marca, modelo, data
@@ -21,6 +21,7 @@
 #include <regex>
 #include <optional>
 #include <map>
+#include <cstdlib>
 
 #include <fstream>
 #include <fmt/format.h>
@@ -34,7 +35,16 @@ using money = boost::multiprecision::cpp_dec_float_50;
 
 #include "Utils.hpp"
 
-const std::string CSV_DELIM = "|";
+// Funcao para limpar o ecra. Cross_platform
+void clear_scr(){
+    #if defined(__linux__) || defined(__FreeBSD__) || defined(__APPLE__)
+        system("clear");
+    #elif _WIN32
+        system("cls");
+    #endif
+}
+
+const std::string CSV_DELIM = ",";
 
 // Files /////////////////////////////////////////////
 std::ifstream file("viaturas.csv");
@@ -88,7 +98,7 @@ public:
     static Viatura from_csv(const string& viat_csv) {
         auto attrs = utils::split(viat_csv, CSV_DELIM);
         if(attrs.size() != 4){
-            throw AttrViaturaInvalido(format("from_csv: Numero de atrivbutos inválido"));
+            throw AttrViaturaInvalido(format("from_csv: Numero de atributos inválido"));
         }
         return Viatura(
             attrs[0],
@@ -244,11 +254,73 @@ public:
         }
     }
 
-private:
+    private:
 
-    vector<Viatura> viaturas;
+        vector<Viatura> viaturas;
 
 };
+
+    void listagem_viat() {
+
+        VoituresCollection viaturas;
+        clear_scr();
+        std::cout << "*** Listagem ***\n";
+        std::cin.ignore(999, '\n');
+        viaturas._dump();
+        std::cout << "\nCarregue em qualquer tecla para continuar.";
+        std::cin.get();
+        clear_scr();
+    }
+
+    void pesquisa_viat() {
+
+        clear_scr();
+        std::cout << "*** Pesquisa *** \n\n";
+        std::cout << "1: Matricula" << std::endl;
+        std::cout << "2: Marca" << std::endl;
+        std::cout << "3: Modelo" << std::endl;
+        std::cout << "4: Data" << std::endl;
+        std::cout << "0: Sair" << std::endl;
+        std::cout << "> ";
+        char option1_2 = ' ';
+        std::cin >> option1_2;
+
+        switch(option1_2) {
+            case '1':
+            {
+                std::cout << "Insira matricula: ";
+
+                break;
+            }
+            case '2':
+            {
+                std::cout << "Insira marca: ";
+                break;
+            }
+            case '3':
+            { 
+                std::cout << "Insira modelo: ";
+                break;
+            }
+            case '4':
+            { 
+                std::cout << "Insira data: ";
+                break;
+            }
+            case '0':
+            { 
+                clear_scr();    
+                break;
+            }
+            default:
+            {
+                std::cout << "Opcao invalida.";
+                std::cin.ignore(999, '\n');
+                std::cin.get();
+                break;
+            }
+        }
+    }
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -270,54 +342,50 @@ int main() {
         viaturas.add(Viatura::from_csv(line));
     }
 
-    
-    std::cout << "\n\n***Demonstracao terminada.*** \nDeseja utilizar as funcionalidades do programa? (y/n)";
-    char option;
-
+    clear_scr();    
     while (true) {
 
-        option = getchar();
-        
-        if (option == 'y') {
-            while (true) {
+        std::cout << "*** Gestao de Viaturas ***\n" << std::endl;
+        std::cout << "1: Listagem" << std::endl;
+        std::cout << "2: Pesquisar" << std::endl;
+        std::cout << "3: Inserir viatura" << std::endl;
+        std::cout << "4: Remover viatura" << std::endl;
+        std::cout << "5: Guardar alteracoes" << std::endl;
+        std::cout << "0: Sair" << std::endl;
+        char option1 = ' ';
+        std::cout << "> ";
+        std::cin >> option1;
+            
+        if(option1 == '1'){
+                listagem_viat();
+            }
+            else if(option1 == '2') {
+                pesquisa_viat();
+            }
+            else if (option1 == '3') {
 
-                std::cout << "*** Gestao de Viaturas ***" << std::endl;
-                std::cout << "1: Listagem" << std::endl;
-                std::cout << "2: Pesquisar" << std::endl;
-                std::cout << "3: Inserir viatura" << std::endl;
-                std::cout << "4: Remover viatura" << std::endl;
-                std::cout << "5: Guardar alteracoes" << std::endl;
+            }
+            else if (option1 == '4') {
 
-                char option2 = ' ';
-                option2 = getchar();
-                
-                switch(option2){
-                    case '1': 
-                        viaturas._dump();
-
-                    case '2': ;
-                    case '3': ;
-                    case '4': ;
-
-                    case '5': 
-                        viaturas.save();
-
-                    default:
-                        std::cout << "Opcao invalida.";
-                        break;
-                
                 }
+            else if (option1 == '5') {
+                    clear_scr();    
+                    std::cin.ignore(999, '\n');
+                    viaturas.save();
+                    std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
+                    std::cin.get();
+                    clear_scr();    
 
-            } //while 2
+            }
+            else if (option1 == '0') {
+                return 0;
+            }
+            else {
+                std::cout << "Opcao invalida.";
+                std::cin.ignore(999, '\n');
+                std::cin.get();
+            }
 
-        }
-        else if (option == 'n') {
-            return 0;
-        }
-        else {
-            std::cout << "Opcao invalida.";
-        }
-
-    } // while 1
+    } //while
 
 } // main
