@@ -44,7 +44,7 @@ void clear_scr(){
     #endif
 }
 
-const std::string CSV_DELIM = ",";
+const std::string CSV_DELIM = "|";
 
 // Files /////////////////////////////////////////////
 std::ifstream input_file("viaturas.csv");
@@ -244,11 +244,44 @@ public:
     void _dump() {
         for (const auto& viat : this->viaturas) {
             viat.mostra();
-            print("{}\n", string(10, '#'));
+            //print("{}\n", string(10, '#'));
         }
     }
 
     // Additions ////////////////////////////////////
+
+    void search_by_matricula(std::string matricula) {
+        for (const auto& viat : this->viaturas) {
+            if (viat.get_matricula() == matricula) {
+                return viat.mostra();
+            }
+        }
+        std::cout << "Not Found!\n";
+    }
+
+    void search_by_marca(std::string marca) {
+        for (const auto& viat : this->viaturas) {
+            if (viat.get_marca() == marca) {
+                viat.mostra();
+            }
+        }
+    }
+
+    void search_by_modelo(std::string modelo) {
+        for (const auto& viat : this->viaturas) {
+            if (viat.get_modelo() == modelo) {
+                viat.mostra();
+            }
+        }
+    }
+
+    void search_by_data(std::string data) {
+        for (const auto& viat : this->viaturas) {
+            if (viat.get_data() == data) {
+                viat.mostra();
+            }
+        }
+    }
 
     void save_to_csv() {
         for (const auto& viat : this->viaturas) {
@@ -271,23 +304,23 @@ public:
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+    VoituresCollection viaturas;    // Global //////////////////////////////////
+
     void listagem_viat() {
 
-        VoituresCollection viaturas;
         clear_scr();
-        std::cout << "*** Listagem ***\n";
-        std::cin.ignore(9999, '\n');
+        std::cout << "*** Listagem ***\n\n";
 
         viaturas._dump();
 
         std::cout << "\nCarregue em qualquer tecla para continuar.";
         std::cin.get();
-        clear_scr();
     }
 
     void pesquisa_viat() {
 
         clear_scr();
+
         std::cout << "*** Pesquisa *** \n\n";
         std::cout << "1: Matricula" << std::endl;
         std::cout << "2: Marca" << std::endl;
@@ -296,43 +329,53 @@ public:
         std::cout << "0: Sair" << std::endl;
         std::cout << "> ";
 
-        char option1_2 = ' ';
-        std::cin >> option1_2;
+        std::string option_search;
+        std::getline(std::cin, option_search);
 
-        switch(option1_2) {
-            case '1':
-            {
-                std::cout << "Insira matricula: ";
-                
-                break;
-            }
-            case '2':
-            {
-                std::cout << "Insira marca: ";
-                break;
-            }
-            case '3':
-            { 
-                std::cout << "Insira modelo: ";
-                break;
-            }
-            case '4':
-            { 
-                std::cout << "Insira data: ";
-                break;
-            }
-            case '0':
-            { 
-                clear_scr();    
-                break;
-            }
-            default:
-            {
-                std::cout << "Opcao invalida.";
-                std::cin.ignore(9999, '\n');
-                std::cin.get();
-                break;
-            }
+        if(option_search == "1"){
+            clear_scr();
+            std::string matricula = "";
+            std::cout << "Insira matricula: ";
+            std::getline(cin, matricula);
+            viaturas.search_by_matricula(matricula);
+            std::cout << "Press Enter...";
+            std::cin.get();
+        }
+        else if(option_search == "2"){
+            clear_scr();
+            std::string marca = "";
+            std::cout << "Insira marca: ";
+            std::getline(cin, marca);
+            viaturas.search_by_marca(marca);
+            std::cout << "Press Enter...";
+            std::cin.get();
+        }
+        else if(option_search == "3"){
+            clear_scr();
+            std::string modelo = "";
+            std::cout << "Insira modelo: ";
+            std::getline(cin, modelo);
+            viaturas.search_by_modelo(modelo);
+            std::cout << "Press Enter...";
+            std::cin.get();
+        }
+        else if(option_search == "4"){
+            clear_scr();
+            std::string data = "";
+            std::cout << "Insira data: ";
+            std::getline(cin, data);
+            viaturas.search_by_data(data);
+            std::cout << "Press Enter...";
+            std::cin.get();
+        }
+        else if(option_search == "0"){ 
+            clear_scr();    
+        }
+        else{
+            clear_scr();
+            std::cout << "Opcao invalida.";
+            std::cin.get();
+            clear_scr();
         }
     }
 
@@ -347,17 +390,17 @@ int main() {
 
     std::string line;
 
-    VoituresCollection viaturas;
-
     while(std::getline(input_file, line)){
         if(line.find("//") == 0 || line.find("##") == 0 || line == "") {
             continue;
         }
         viaturas.add(Viatura::from_csv(line));
     }
-
-    clear_scr();    
+  
     while (true) {
+
+        clear_scr();  
+        char enter;
 
         std::cout << "*** Gestao de Viaturas ***\n" << std::endl;
         std::cout << "1: Listagem" << std::endl;
@@ -366,45 +409,43 @@ int main() {
         std::cout << "4: Remover viatura" << std::endl;
         std::cout << "5: Guardar alteracoes" << std::endl;
         std::cout << "0: Sair" << std::endl;
-        char option1 = ' ';
+
         std::cout << "> ";
-        std::cin >> option1;
+        std::string option; 
+        std::getline(std::cin, option);
             
-        if(option1 == '1'){
-                listagem_viat();
-            }
-            else if(option1 == '2') {
-                pesquisa_viat();
-            }
-            else if (option1 == '3') {
+        if(option == "1") {
+            listagem_viat();
+        }
+        else if(option == "2") {
+            pesquisa_viat();
+        }
+        else if (option == "3") {
 
-            }
-            else if (option1 == '4') {
+        }
+        else if (option == "4") {
 
-            }
-            else if (option1 == '5') {
+        }
+        else if (option == "5") {
 
-                    clear_scr();    
-                    std::cin.clear();
-                    std::cin.ignore(9999, '\n');
+            clear_scr();
 
-                    viaturas.save_to_csv();
+            viaturas.save_to_csv();
 
-                    std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
-                    std::cin.get();
-                    clear_scr();    
+            std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
+            std::cin.get(enter);
+            clear_scr();    
 
-            }
-            else if (option1 == '0') {
-                return 0;
-            }
-            else {
-
-                std::cout << "Opcao invalida.";
-                std::cin.clear();
-                std::cin.ignore(9999, '\n');
-                std::cin.get();
-            }
+        }
+        else if (option == "0") {
+            clear_scr();  
+            return 0;
+        }
+        else {
+            clear_scr();  
+            std::cout << "Opcao invalida.";
+            std::cin.get(enter);
+        }
 
     } //while
 
