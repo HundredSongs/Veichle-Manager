@@ -440,21 +440,38 @@ int main() {
             pesquisa_viat();
         }
         else if (option == "3") {
+            clear_scr();
+            std::string matricula;
+            std::string marca;
+            std::string modelo;
+            std::string data;
+
+            std::cout << "Insira a matricula: ";
+            std::getline(std::cin, matricula);
+            std::cout << "Insira a marca: ";
+            std::getline(std::cin, marca);
+            std::cout << "Insira a modelo: ";
+            std::getline(std::cin, modelo);
+            std::cout << "Insira a data: ";
+            std::getline(std::cin, data);
+
+            viaturas.add(
+                Viatura(
+                    matricula,
+                    marca,
+                    modelo,
+                    data
+            ));
 
         }
         else if (option == "4") {
 
         }
         else if (option == "5") {
-
             clear_scr();
-
             viaturas.save_to_csv();
-
             std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
-            std::cin.get(enter);
-            clear_scr();    
-
+            std::cin.get(enter); 
         }
         else if (option == "0") {
             clear_scr();  
