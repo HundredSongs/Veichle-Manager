@@ -445,8 +445,8 @@ int main() {
         std::cout << "2: Pesquisar" << std::endl;
         std::cout << "3: Inserir viatura" << std::endl;
         std::cout << "4: Remover viatura" << std::endl;
-        std::cout << "5: Guardar alteracoes" << std::endl;
-        std::cout << "0: Sair" << std::endl;
+        std::cout << "5: Guardar e Sair" << std::endl;
+        std::cout << "0: Sair..." << std::endl;
 
         std::cout << "> ";
         std::string option; 
