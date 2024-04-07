@@ -302,6 +302,25 @@ public:
         }
     }
 
+    void remove_entry(std::string matricula){
+
+        auto i = this->viaturas.begin();
+        bool find = false;
+
+        for(const auto& viat : this->viaturas){
+
+            if(viat.get_matricula() == matricula){
+                this->viaturas.erase(i);
+                std::cout << "Removed...\n";
+                find = true;
+            }
+            i++;
+        }
+        if(find == false){
+            std::cout << "Not Found!\n";
+        }
+    }
+
     void save_to_csv() {
         for (const auto& viat : this->viaturas) {
             output_file << viat.to_csv() << "\n";
@@ -463,15 +482,26 @@ int main() {
                     data
             ));
 
+            std::cout << "Success, voiture added!";
+            std::cout << "Press Enter...";
+            std::cin.get(enter); 
+
         }
         else if (option == "4") {
-
+            clear_scr();
+            std::string matricula;
+            std::cout << "Insira a matricula: ";
+            std::getline(std::cin, matricula);
+            viaturas.remove_entry(matricula);
+            std::cout << "Press Enter...";
+            std::cin.get(enter); 
         }
         else if (option == "5") {
             clear_scr();
             viaturas.save_to_csv();
-            std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
-            std::cin.get(enter); 
+            std::cout << "\nFicheiro salvo. \nVai agora sair do programa. \nPressione qualquer tecla para continuar.";
+            std::cin.get(enter);
+            return 0;
         }
         else if (option == "0") {
             clear_scr();  
