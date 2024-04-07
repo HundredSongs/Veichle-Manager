@@ -251,35 +251,54 @@ public:
     // Additions ////////////////////////////////////
 
     void search_by_matricula(std::string matricula) {
+        bool find = false;
         for (const auto& viat : this->viaturas) {
             if (viat.get_matricula() == matricula) {
-                return viat.mostra();
+                viat.mostra();
+                find = true;
             }
         }
-        std::cout << "Not Found!\n";
+        if(find == false){
+            std::cout << "Not Found!\n";
+        }
     }
 
     void search_by_marca(std::string marca) {
+        bool find = false;
         for (const auto& viat : this->viaturas) {
             if (viat.get_marca() == marca) {
                 viat.mostra();
+                find = true;
             }
+        }
+        if(find == false){
+            std::cout << "Not Found!\n";
         }
     }
 
     void search_by_modelo(std::string modelo) {
+        bool find = false;
         for (const auto& viat : this->viaturas) {
             if (viat.get_modelo() == modelo) {
                 viat.mostra();
+                find = true;
             }
+        }
+        if(find == false){
+            std::cout << "Not Found!\n";
         }
     }
 
     void search_by_data(std::string data) {
+        bool find = false;
         for (const auto& viat : this->viaturas) {
             if (viat.get_data() == data) {
                 viat.mostra();
+                find = true;
             }
+        }
+        if(find == false){
+            std::cout << "Not Found!\n";
         }
     }
 
