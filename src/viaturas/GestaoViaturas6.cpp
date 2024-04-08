@@ -48,8 +48,6 @@ const std::string CSV_DELIM = "|";
 
 // Files /////////////////////////////////////////////
 std::ifstream input_file("viaturas.csv");
-std::ofstream output_file("output.csv");
-
 
 class AttrViaturaInvalido : public invalid_argument {  // class AttrViaturaInvalido extends IllegalArgumentExceptin
     using invalid_argument::invalid_argument;   
@@ -322,6 +320,7 @@ public:
     }
 
     void save_to_csv() {
+        std::ofstream output_file("viaturas.csv");
         for (const auto& viat : this->viaturas) {
             output_file << viat.to_csv() << "\n";
         }
@@ -445,7 +444,7 @@ int main() {
         std::cout << "2: Pesquisar" << std::endl;
         std::cout << "3: Inserir viatura" << std::endl;
         std::cout << "4: Remover viatura" << std::endl;
-        std::cout << "5: Guardar e Sair" << std::endl;
+        std::cout << "5: Guardar" << std::endl;
         std::cout << "0: Sair..." << std::endl;
 
         std::cout << "> ";
@@ -482,7 +481,7 @@ int main() {
                     data
             ));
 
-            std::cout << "Success, voiture added!";
+            std::cout << "Viatura adicionada com sucesso!";
             std::cout << "Press Enter...";
             std::cin.get(enter); 
 
@@ -499,9 +498,10 @@ int main() {
         else if (option == "5") {
             clear_scr();
             viaturas.save_to_csv();
-            std::cout << "\nFicheiro salvo. \nVai agora sair do programa. \nPressione qualquer tecla para continuar.";
+            std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
+
             std::cin.get(enter);
-            return 0;
+            //return 0;
         }
         else if (option == "0") {
             clear_scr();  
