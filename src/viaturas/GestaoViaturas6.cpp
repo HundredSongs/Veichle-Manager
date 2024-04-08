@@ -228,6 +228,7 @@ public:
             throw DuplicateValue(format("Já existe uma viatura com a matricula {}\n", new_viat_id));
         }
         this->viaturas.emplace_back(viat);
+        std::cout << "Viatura adicionada com sucesso!\n";
     }
 
     optional<Viatura> search_by_id(std::string matricula) {
@@ -248,17 +249,15 @@ public:
 
     // Additions ////////////////////////////////////
 
-    void search_by_matricula(std::string matricula) {
-        bool find = false;
+    bool search_by_matricula(std::string matricula) {
         for (const auto& viat : this->viaturas) {
             if (viat.get_matricula() == matricula) {
                 viat.mostra();
-                find = true;
+                return true;
             }
         }
-        if(find == false){
-            std::cout << "Not Found!\n";
-        }
+        std::cout << "Viatura não encontrada...\n";
+        return false;
     }
 
     void search_by_marca(std::string marca) {
@@ -270,7 +269,7 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Not Found!\n";
+            std::cout << "Viatura não encontrada...\n";
         }
     }
 
@@ -283,7 +282,7 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Not Found!\n";
+            std::cout << "Viatura não encontrada...\n";
         }
     }
 
@@ -296,27 +295,25 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Not Found!\n";
+            std::cout << "Viatura não encontrada...\n";
         }
     }
 
     void remove_entry(std::string matricula){
 
         auto i = this->viaturas.begin();
-        bool find = false;
 
         for(const auto& viat : this->viaturas){
 
             if(viat.get_matricula() == matricula){
                 this->viaturas.erase(i);
-                std::cout << "Removed...\n";
-                find = true;
+                std::cout << "Viatura Removida...\n";
+                return;
             }
             i++;
         }
-        if(find == false){
-            std::cout << "Not Found!\n";
-        }
+        std::cout << "Viatura nao encontrada...\n";
+        return;
     }
 
     void save_to_csv() {
@@ -324,6 +321,7 @@ public:
         for (const auto& viat : this->viaturas) {
             output_file << viat.to_csv() << "\n";
         }
+        std::cout << "\nFicheiro Salvo.\n";
     }
 
     // End of Additions /////////////////////////////
@@ -358,6 +356,9 @@ public:
 
         clear_scr();
 
+        std::string press_enter;
+        std::string search_option;
+
         std::cout << "*** Pesquisa *** \n\n";
         std::cout << "1: Matricula" << std::endl;
         std::cout << "2: Marca" << std::endl;
@@ -366,52 +367,51 @@ public:
         std::cout << "0: Sair" << std::endl;
         std::cout << "> ";
 
-        std::string option_search;
-        std::getline(std::cin, option_search);
+        std::getline(std::cin, search_option);
 
-        if(option_search == "1"){
+        if(search_option == "1"){
             clear_scr();
             std::string matricula = "";
             std::cout << "Insira matricula: ";
             std::getline(cin, matricula);
             viaturas.search_by_matricula(matricula);
             std::cout << "Press Enter...";
-            std::cin.get();
+            std::getline(cin, press_enter);
         }
-        else if(option_search == "2"){
+        else if(search_option == "2"){
             clear_scr();
             std::string marca = "";
             std::cout << "Insira marca: ";
             std::getline(cin, marca);
             viaturas.search_by_marca(marca);
             std::cout << "Press Enter...";
-            std::cin.get();
+            std::getline(cin, press_enter);
         }
-        else if(option_search == "3"){
+        else if(search_option == "3"){
             clear_scr();
             std::string modelo = "";
             std::cout << "Insira modelo: ";
             std::getline(cin, modelo);
             viaturas.search_by_modelo(modelo);
             std::cout << "Press Enter...";
-            std::cin.get();
+            std::getline(cin, press_enter);
         }
-        else if(option_search == "4"){
+        else if(search_option == "4"){
             clear_scr();
             std::string data = "";
             std::cout << "Insira data: ";
             std::getline(cin, data);
             viaturas.search_by_data(data);
             std::cout << "Press Enter...";
-            std::cin.get();
+            std::getline(cin, press_enter);
         }
-        else if(option_search == "0"){ 
+        else if(search_option == "0"){ 
             clear_scr();    
         }
         else{
             clear_scr();
             std::cout << "Opcao invalida.";
-            std::cin.get();
+            std::getline(cin, press_enter);
             clear_scr();
         }
     }
@@ -436,9 +436,11 @@ int main() {
   
     while (true) {
 
-        clear_scr();  
-        char enter;
+        clear_scr();
 
+        std::string option;
+        std::string press_enter;
+        
         std::cout << "*** Gestao de Viaturas ***\n" << std::endl;
         std::cout << "1: Listagem" << std::endl;
         std::cout << "2: Pesquisar" << std::endl;
@@ -447,8 +449,7 @@ int main() {
         std::cout << "5: Guardar" << std::endl;
         std::cout << "0: Sair..." << std::endl;
 
-        std::cout << "> ";
-        std::string option; 
+        std::cout << "> "; 
         std::getline(std::cin, option);
             
         if(option == "1") {
@@ -458,7 +459,9 @@ int main() {
             pesquisa_viat();
         }
         else if (option == "3") {
+
             clear_scr();
+
             std::string matricula;
             std::string marca;
             std::string modelo;
@@ -481,27 +484,46 @@ int main() {
                     data
             ));
 
-            std::cout << "Viatura adicionada com sucesso!";
+            viaturas.save_to_csv();
+
             std::cout << "Press Enter...";
-            std::cin.get(enter); 
+            std::getline(cin, press_enter); 
 
         }
         else if (option == "4") {
+
             clear_scr();
+
             std::string matricula;
+            std::string confirmation;
+            bool found;
+            
             std::cout << "Insira a matricula: ";
             std::getline(std::cin, matricula);
-            viaturas.remove_entry(matricula);
+            found = viaturas.search_by_matricula(matricula);
+
+            if(found == true){
+
+                std::cout << "\nDeseja remover a viatura [s/n]? ";
+                std::getline(cin, confirmation);
+                
+                if(confirmation == "s" || confirmation == "S"){
+                    viaturas.remove_entry(matricula);
+                    viaturas.save_to_csv();
+                }
+                else{
+                    std::cout << "A viatura não foi removida.\n";
+                }
+            }
+
             std::cout << "Press Enter...";
-            std::cin.get(enter); 
+            std::getline(cin, press_enter);
         }
         else if (option == "5") {
             clear_scr();
             viaturas.save_to_csv();
-            std::cout << "\nFicheiro salvo. \nPressione qualquer tecla para continuar.";
-
-            std::cin.get(enter);
-            //return 0;
+            std::cout << "Press Enter...";
+            std::getline(cin, press_enter);
         }
         else if (option == "0") {
             clear_scr();  
@@ -510,7 +532,8 @@ int main() {
         else {
             clear_scr();  
             std::cout << "Opcao invalida.";
-            std::cin.get(enter);
+            std::cout << "Press Enter...";
+            std::getline(cin, press_enter);
         }
 
     } //while

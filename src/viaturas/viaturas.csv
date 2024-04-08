@@ -1,8 +1,7 @@
-// matricula (str), marca, modelo, data
 10-XY-20|Opel|Corsa XL|2019-10-15
 20-PQ-15|Mercedes|300SL|2017-05-31
 22-XQ-15|Porsche|XL|2017-05-31
-
-## Outra linha de comentários
-
 30-FX-05|Tesla|Model T|2021-05-31
+89-AA-55|Marca|Modelo|2024-04-08
+99-BB-22|Teste|Modelo|2024-04-08
+11-BB-33|Tesla|XL|2024-04-08
