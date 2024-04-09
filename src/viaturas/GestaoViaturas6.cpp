@@ -218,7 +218,7 @@ class DuplicateValue : public invalid_argument {
     using invalid_argument::invalid_argument;
 };
 
-class VoituresCollection {
+class VehiclesCollection {
 
 public:
 
@@ -339,7 +339,7 @@ public:
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-    VoituresCollection viaturas;    // Global //////////////////////////////////
+    VehiclesCollection viaturas;    // Global //////////////////////////////////
 
     void listagem_viat() {
 
