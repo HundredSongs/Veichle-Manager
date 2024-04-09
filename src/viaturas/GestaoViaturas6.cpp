@@ -256,7 +256,7 @@ public:
                 return true;
             }
         }
-        std::cout << "Viatura não encontrada...\n";
+        std::cout << "Viatura nao esta registada...\n";
         return false;
     }
 
@@ -269,7 +269,7 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Viatura não encontrada...\n";
+            std::cout << "Viatura não esta registada...\n";
         }
     }
 
@@ -282,7 +282,7 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Viatura não encontrada...\n";
+            std::cout << "Viatura não esta registada...\n";
         }
     }
 
@@ -295,7 +295,7 @@ public:
             }
         }
         if(find == false){
-            std::cout << "Viatura não encontrada...\n";
+            std::cout << "Viatura não esta registada...\n";
         }
     }
 
@@ -312,7 +312,7 @@ public:
             }
             i++;
         }
-        std::cout << "Viatura nao encontrada...\n";
+        std::cout << "Viatura nao esta registada...\n";
         return;
     }
 
@@ -321,7 +321,7 @@ public:
         for (const auto& viat : this->viaturas) {
             output_file << viat.to_csv() << "\n";
         }
-        std::cout << "\nFicheiro Salvo.\n";
+        std::cout << "\nFicheiro salvo.\n";
     }
 
     // End of Additions /////////////////////////////
@@ -447,7 +447,7 @@ int main() {
         std::cout << "3: Inserir viatura" << std::endl;
         std::cout << "4: Remover viatura" << std::endl;
         std::cout << "5: Guardar" << std::endl;
-        std::cout << "0: Sair..." << std::endl;
+        std::cout << "0: Sair" << std::endl;
 
         std::cout << "> "; 
         std::getline(std::cin, option);
