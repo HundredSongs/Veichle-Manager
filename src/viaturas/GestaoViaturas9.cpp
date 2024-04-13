@@ -440,8 +440,8 @@ void exec_del_viat() {
         encontrados.add(viat_encontrado.value());
         show_table_with_viat(encontrados);
 
-        std::string confirmation = ask("Deseja remover a viatura [s/n]? ");
         println("");
+        std::string confirmation = ask("Deseja remover a viatura [s/n]? ");
         
         if(confirmation == "s" || confirmation == "S"){
             viaturas.remove_entry(matricula);
