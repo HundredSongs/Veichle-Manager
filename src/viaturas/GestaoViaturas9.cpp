@@ -231,23 +231,28 @@ public:
         return {};
     }
 
-    bool search_by_matricula(const string& matricula) {
-        if (this->viaturas.contains(matricula)) {
-            this->viaturas.at(matricula).mostra();
-            return true;
-        }
-        return false;
-    }
-
     template<typename F>
     VehicleCollection search(F funcao_criterio ) {
         VehicleCollection encontrados;
         for (const auto& [matricula, viat] : this->viaturas) {
-            if ( funcao_criterio(viat)  ) {
-                encontrados.add(matricula, viat);
+            if ( funcao_criterio(viat) ) {
+                encontrados.add(viat);
             }
         }
         return encontrados;
+    }
+
+    bool is_empty(VehicleCollection& encontrados) {
+
+        int i = 0;
+        for(const auto& [id, viat] : encontrados){
+            i++;
+        }
+
+        if(i == 0) {
+            return false;
+        }
+        return true;
     }
 
     void remove_entry(std::string matricula){
@@ -384,23 +389,106 @@ void exec_search_by_matricula() {
     clear_screen();
     println("");
 
-    show_msg("PESQUISA POR MRICULA\n");
+    show_msg("PESQUISA POR MATRICULA\n");
     auto matricula = ask("Indique o MATRICULA do produto a pesquisar: ");
-    auto viat_encontrado = viaturas.search_by_id(matricula);
+    
+    auto por_matricula = [matricula](const Viatura& viat) {
+        return viat.get_matricula() == matricula;
+    };
+
+    auto encontrados = viaturas.search(por_matricula);
+
     println("");
     
-    if (viat_encontrado) {
-        VehicleCollection encontrados;
-        encontrados.add(viat_encontrado.value());
+    if(encontrados.is_empty(encontrados)) {
         show_table_with_viat(encontrados);
     }
     else {
-        show_msg(format("Não foram encontrados produtos com ID {}", matricula));
+        show_msg(format("Não foram encontradas viaturas com a MATRICULA {}", matricula));
     }
 
     println("");
     pause_();
 }
+
+void exec_search_by_marca() {
+    clear_screen();
+    println("");
+
+    show_msg("PESQUISA POR MARCA\n");
+    auto marca = ask("Indique a MARCA das viaturas a pesquisar: ");
+
+    auto por_marca = [marca](const Viatura& viat) {
+        return viat.get_marca() == marca;
+    };
+
+    auto encontrados = viaturas.search(por_marca);
+
+    println("");
+    
+    if(encontrados.is_empty(encontrados)) {
+        show_table_with_viat(encontrados);
+    }
+    else {
+        show_msg(format("Não foram encontradas viaturas com a MARCA {}", marca));
+    }
+
+    println("");
+    pause_();
+}
+
+void exec_search_by_model() {
+    clear_screen();
+    println("");
+
+    show_msg("PESQUISA POR MODELO\n");
+    auto modelo = ask("Indique o MODELO das viaturas a pesquisar: ");
+
+    auto por_modelo = [modelo](const Viatura& viat) {
+        return viat.get_modelo() == modelo;
+    };
+
+    auto encontrados = viaturas.search(por_modelo);
+
+    println("");
+    
+    if(encontrados.is_empty(encontrados)){
+        show_table_with_viat(encontrados);
+    }
+    else {
+        show_msg(format("Não foram encontradas viaturas com o MODELO {}", modelo));
+    }
+
+    println("");
+    pause_();
+}
+
+void exec_search_by_data() {
+    clear_screen();
+    println("");
+
+    show_msg("PESQUISA POR DATA\n");
+    auto data = ask("Indique a DATA das viaturas a pesquisar: ");
+
+    auto por_data = [data](const Viatura& viat) {
+        return viat.get_data() == data;
+    };
+
+    auto encontrados = viaturas.search(por_data);
+
+    println("");
+    
+    if(encontrados.is_empty(encontrados)) {
+        show_table_with_viat(encontrados);
+    }
+    else {
+        show_msg(format("Não foram encontradas viaturas com a DATA {}", data));
+    }
+
+    println("");
+    pause_();
+}
+
 // Acrescentar viatura ///////////////////////////
 void exec_add_viat() {
 
@@ -511,6 +599,9 @@ void exec_menu() {
         }
         else if (OPCAO == "P" || OPCAO == "PESQUISAR") {
             exec_search_by_matricula();
+        }
+        else if (OPCAO == "PT" || OPCAO == "PESQUISAR MATRICULA") {
+            exec_search_by_data();
         }
         else if (OPCAO == "A" || OPCAO == "ACRESCENTAR") {
             exec_add_viat();
