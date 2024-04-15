@@ -383,7 +383,8 @@ void exec_list_viat() {
     println("");
     pause_();
 }
-// Pesquisar por MATRICULA ///////////////////////
+
+// Pesquisar por  //////////////////////////////////
 void exec_search_by_matricula() {
 
     clear_screen();
@@ -489,6 +490,50 @@ void exec_search_by_data() {
     pause_();
 }
 
+// Search Menu ///////////////////////////////////
+void exec_search_menu() {
+    while (true) {
+        clear_screen();
+        println("");
+        show_msg("#################################################");
+        show_msg("#                                               #");
+        show_msg("#  1 - Pesquisar por matricula                  #");
+        show_msg("#  2 - Pesquisar por marca                      #");
+        show_msg("#  3 - Pesquisar por modelo                     #");
+        show_msg("#  4 - Pesquisar por data                       #");
+        show_msg("#                                               #");
+        show_msg("#  V - Voltar atras                             #");
+        show_msg("#                                               #");
+        show_msg("#################################################");
+        println("");
+
+        string opcao = ask("OPÇÃO> ");
+
+        auto OPCAO = utils::to_upper_copy(opcao);
+        if (OPCAO == "1" || OPCAO == "MATRICULA") {
+            exec_search_by_matricula();
+        }
+        else if (OPCAO == "2" || OPCAO == "MARCA") {
+            exec_search_by_marca();
+        }
+        else if (OPCAO == "3" || OPCAO == "MODELO") {
+            exec_search_by_model();
+        }
+        else if (OPCAO == "4" || OPCAO == "DATA") {
+            exec_search_by_data();
+        }
+        else if (OPCAO == "V" || OPCAO == "VOLTAR") {
+            break;
+        }
+        else {
+            println("");
+            show_msg(format("ATENÇÃO: Opção {} inválida", opcao));
+            pause_();
+        }
+    }
+}
+
+
 // Acrescentar viatura ///////////////////////////
 void exec_add_viat() {
 
@@ -579,14 +624,13 @@ void exec_menu() {
         println("");
         show_msg("#################################################");
         show_msg("#                                               #");
-        show_msg("#  L  - Listar catálogo                         #");
-        show_msg("#  P  - Pesquisar por matricula                 #");
-        show_msg("#  PT - Pesquisar por tipo                      #");
-        show_msg("#  A  - Acrescentar produto                     #");
-        show_msg("#  E  - Eliminar produto                        #");
-        show_msg("#  G  - Guardar catálogo em ficheiro            #");
+        show_msg("#  L - Listar catálogo                          #");
+        show_msg("#  P - Pesquisar por ...                        #");
+        show_msg("#  A - Acrescentar produto                      #");
+        show_msg("#  E - Eliminar produto                         #");
+        show_msg("#  G - Guardar catálogo em ficheiro             #");
         show_msg("#                                               #");
-        show_msg("#  T  - Terminar o programa                     #");
+        show_msg("#  T - Terminar o programa                      #");
         show_msg("#                                               #");
         show_msg("#################################################");
         println("");
@@ -598,10 +642,7 @@ void exec_menu() {
             exec_list_viat();
         }
         else if (OPCAO == "P" || OPCAO == "PESQUISAR") {
-            exec_search_by_matricula();
-        }
-        else if (OPCAO == "PT" || OPCAO == "PESQUISAR MATRICULA") {
-            exec_search_by_data();
+            exec_search_menu();
         }
         else if (OPCAO == "A" || OPCAO == "ACRESCENTAR") {
             exec_add_viat();
