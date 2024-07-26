@@ -1,3 +1,4 @@
-# UFCD 785 Project_2
-### Segundo projecto, UFCD 785
+# C++ Veichle Manager
+### Second Project for UFCD 785
 
+ C++ Software made for veichle management with .CSV database.
